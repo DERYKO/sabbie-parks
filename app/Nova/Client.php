@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Inspheric\Fields\Url;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Country;
@@ -58,7 +59,9 @@ class Client extends Resource
             Text::make('Email', 'email_address')
                 ->sortable()
                 ->rules('required', 'max:255'),
-            Text::make('Website'),
+            Url::make('Website')
+                ->label('Visit Website')
+                ->alwaysClickable(true),
             Text::make('Postal Address')->onlyOnForms(),
             Text::make('Postal Code')->onlyOnForms(),
         ];

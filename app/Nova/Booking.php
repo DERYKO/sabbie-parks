@@ -100,6 +100,6 @@ class Booking extends Resource
     }
 
     public static function label() {
-        return 'Parking Bookings';
+        return 'Bookings';
     }
 }

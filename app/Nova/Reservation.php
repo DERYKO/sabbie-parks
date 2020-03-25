@@ -100,6 +100,6 @@ class Reservation extends Resource
         return [];
     }
     public static function label() {
-        return 'Parking Reservations';
+        return 'Reservations';
     }
 }
