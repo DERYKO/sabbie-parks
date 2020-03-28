@@ -44,7 +44,8 @@ class CardDetail extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('User'),
+            BelongsTo::make('User')
+                ->rules('required'),
             Text::make('Type','card_type')
                 ->sortable()
                 ->rules('required', 'max:255'),

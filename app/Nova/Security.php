@@ -43,7 +43,8 @@ class Security extends Resource
     {
         return [
             ID::make()->sortable(),
-            Avatar::make('Icon')->disk('public'),
+            Avatar::make('Icon')->disk('public')
+                ->rules('required'),
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),

@@ -45,13 +45,17 @@ class Booking extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('User'),
-            BelongsTo::make('ParkingSpot','parking_spot'),
+            BelongsTo::make('User')
+                ->rules('required'),
+            BelongsTo::make('ParkingSpot','parking_spot')
+                ->rules('required'),
             BelongsTo::make('UserVehicle','user_vehicle'),
-            Number::make('Expiry Time'),
+            Number::make('Expiry Time')
+                ->rules('required'),
             Text::make('Registration Number'),
             Text::make('Color'),
-            Text::make('Inconvenience Fee'),
+            Text::make('Inconvenience Fee')
+                ->rules('required'),
         ];
     }
 

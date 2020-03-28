@@ -46,19 +46,26 @@ class ParkingSpot extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Client'),
-            Text::make('Parking Code', 'parking_spot_code'),
+            BelongsTo::make('Client')
+                ->rules('required'),
+            Text::make('Parking Code', 'parking_spot_code')
+                ->rules('required'),
             Select::make('Status')->options([
                 'booked' => 'Booked',
                 'occupied' => 'Occupied',
                 'vacant' => 'Vacant',
                 'reserved' => 'Reserved',
-            ]),
-            BelongsTo::make('Location'),
-            Text::make('Land Mark'),
-            Text::make('Latitude'),
-            Text::make('Longitude'),
-            HasOne::make('Pricing'),
+            ])->rules('required'),
+            BelongsTo::make('Location')
+                ->rules('required'),
+            Text::make('Land Mark')
+                ->rules('required'),
+            Text::make('Latitude')
+                ->rules('required'),
+            Text::make('Longitude')
+                ->rules('required'),
+            HasOne::make('Pricing')
+                ->rules('required'),
             HasMany::make('Allowed'),
 
         ];

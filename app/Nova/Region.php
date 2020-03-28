@@ -46,7 +46,8 @@ class Region extends Resource
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
-            Country::make('Country', 'country_code'),
+            Country::make('Country', 'country_code')
+                ->rules('required'),
         ];
     }
 

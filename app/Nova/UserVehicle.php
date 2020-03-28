@@ -43,11 +43,16 @@ class UserVehicle extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('User'),
-            BelongsTo::make('VehicleType','vehicle_type'),
-            Text::make('Registration No'),
-            Text::make('Model Type'),
-            Text::make('Color'),
+            BelongsTo::make('User')
+                ->rules('required'),
+            BelongsTo::make('VehicleType','vehicle_type')
+                ->rules('required'),
+            Text::make('Registration No')
+                ->rules('required'),
+            Text::make('Model Type')
+                ->rules('required'),
+            Text::make('Color')
+                ->rules('required'),
         ];
     }
 

@@ -47,6 +47,7 @@ class Location extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
             BelongsTo::make('region')
+                ->rules('required')
         ];
     }
 
