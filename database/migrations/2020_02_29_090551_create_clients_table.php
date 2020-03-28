@@ -17,7 +17,6 @@ class CreateClientsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('logo')->nullable();
-            $table->string('country');
             $table->integer('region_id')->unsigned()->nullable();
             $table->integer('location_id')->unsigned()->nullable();
             $table->string('address')->nullable();
