@@ -19,7 +19,9 @@
         "laravel/passport": "^7.2",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",
-        "deryko/mapping-select": "*"
+        "deryko/mapping-select": "*",
+        "example/miami-ice": "*",
+        "deryko/sabbie-theme": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -72,6 +74,14 @@
         {
             "type": "path",
             "url": "./nova-components/MappingSelect"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/MiamiIce"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SabbieTheme"
         }
     ],
     "minimum-stability": "dev",
