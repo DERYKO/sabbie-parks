@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Allowed.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Allowed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/CardDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/CardDetail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Feature.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Feature.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Location.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Location.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/ParkingSpot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/ParkingSpot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Pricing.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Pricing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Region.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Region.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Reservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Security.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Security.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/UserVehicle.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/UserVehicle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/VehicleType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/VehicleType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Wallet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendor/nova/partials/logo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/nova/partials/logo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/nova/partials/user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/nova/partials/user.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +207,7 @@
       <workItem from="1584968131654" duration="1752000" />
       <workItem from="1585128852484" duration="3177000" />
       <workItem from="1585206174724" duration="10000" />
-      <workItem from="1585411124884" duration="2122000" />
+      <workItem from="1585411124884" duration="2401000" />
     </task>
     <servers />
   </component>
