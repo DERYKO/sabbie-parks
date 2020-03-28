@@ -33,6 +33,8 @@ class UserVehicle extends Resource
         'id',
     ];
 
+    public static $group = 'User';
+
     /**
      * Get the fields displayed by the resource.
      *

@@ -14,6 +14,8 @@ class Allowed extends Resource
      *
      * @var string
      */
+    public static $group = 'Vehicle';
+
     public static $model = 'App\Allowed';
 
     /**

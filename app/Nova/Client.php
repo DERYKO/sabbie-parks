@@ -18,6 +18,8 @@ class Client extends Resource
      *
      * @var string
      */
+    public static $group = 'User';
+
     public static $model = 'App\Client';
 
     /**

@@ -19,6 +19,8 @@ class Reservation extends Resource
      */
     public static $model = 'App\Reservation';
 
+    public static $group = 'Parking';
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

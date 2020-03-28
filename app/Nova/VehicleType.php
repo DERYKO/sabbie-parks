@@ -15,6 +15,8 @@ class VehicleType extends Resource
      *
      * @var string
      */
+    public static $group = 'Vehicle';
+
     public static $model = 'App\VehicleType';
 
     /**
