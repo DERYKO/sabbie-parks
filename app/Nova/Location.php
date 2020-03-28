@@ -15,6 +15,8 @@ class Location extends Resource
      *
      * @var string
      */
+    public static $group = 'Places';
+
     public static $model = 'App\Location';
 
     /**

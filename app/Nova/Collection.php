@@ -13,6 +13,8 @@ class Collection extends Resource
      *
      * @var string
      */
+    public static $group = 'Payments';
+
     public static $model = 'App\Collection';
 
     /**

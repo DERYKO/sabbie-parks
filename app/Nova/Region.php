@@ -17,6 +17,8 @@ class Region extends Resource
      */
     public static $model = 'App\Region';
 
+    public static $group = 'Places';
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

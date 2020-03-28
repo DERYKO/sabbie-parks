@@ -15,6 +15,8 @@ class Security extends Resource
      *
      * @var string
      */
+    public static $group = 'Security';
+
     public static $model = 'App\Security';
 
     /**

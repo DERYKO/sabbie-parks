@@ -14,6 +14,8 @@ class Feature extends Resource
      *
      * @var string
      */
+    public static $group = 'Security';
+
     public static $model = 'App\Feature';
 
     /**

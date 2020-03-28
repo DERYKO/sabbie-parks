@@ -15,6 +15,8 @@ class Pricing extends Resource
      *
      * @var string
      */
+    public static $group = 'Parking';
+
     public static $model = 'App\Pricing';
 
     /**
