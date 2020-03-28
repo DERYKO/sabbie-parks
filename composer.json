@@ -18,7 +18,8 @@
         "laravel/nova": "*",
         "laravel/passport": "^7.2",
         "laravel/socialite": "^4.3",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "deryko/mapping-select": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -63,6 +64,14 @@
         {
             "type": "path",
             "url": "./nova-components/Mappings"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/MappingSelect"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/MappingSelect"
         }
     ],
     "minimum-stability": "dev",
