@@ -42,8 +42,10 @@ class Allowed extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('ParkingSpot','parking_spot'),
-            BelongsTo::make('VehicleType','vehicle_type'),
+            BelongsTo::make('ParkingSpot','parking_spot')
+                ->rules('required'),
+            BelongsTo::make('VehicleType','vehicle_type')
+                ->rules('required'),
         ];
     }
 

@@ -42,8 +42,10 @@ class Feature extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('ParkingSpot', 'parking_spot'),
+            BelongsTo::make('ParkingSpot', 'parking_spot')
+                ->rules('required'),
             BelongsTo::make('Security')
+                ->rules('required')
         ];
     }
 

@@ -44,11 +44,16 @@ class Wallet extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('User'),
-            Text::make('Transaction Type'),
-            Number::make('Debit'),
-            Number::make('Credit'),
-            Number::make('Balance'),
+            BelongsTo::make('User')
+                ->rules('required'),
+            Text::make('Transaction Type')
+                ->rules('required'),
+            Number::make('Debit')
+                ->rules('required'),
+            Number::make('Credit')
+                ->rules('required'),
+            Number::make('Balance')
+                ->rules('required'),
         ];
     }
 
@@ -100,10 +105,12 @@ class Wallet extends Resource
     {
         return false;
     }
+
     public function authorizedToDelete(Request $request)
     {
         return false;
     }
+
     public function authorizedToUpdate(Request $request)
     {
         return false;
