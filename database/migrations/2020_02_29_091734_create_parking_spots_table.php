@@ -18,8 +18,8 @@ class CreateParkingSpotsTable extends Migration
             $table->string('parking_spot_code')->nullable();
             $table->integer('client_id')->unsigned();
             $table->enum('status', ['booked', 'occupied', 'vacant', 'reserved']);
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->string('land_mark');
             $table->integer('location_id')->unsigned();
             $table->timestamps();

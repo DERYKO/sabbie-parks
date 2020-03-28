@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/cakephp/chronos" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/defuse/php-encryption" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/deryko/mapping-select" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/deryko/mappings" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dingo/api" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dingo/blueprint" />

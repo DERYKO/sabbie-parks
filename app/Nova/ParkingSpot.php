@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Deryko\MappingSelect\MappingSelect;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
@@ -38,6 +39,7 @@ class ParkingSpot extends Resource
         'id',
     ];
 
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -58,14 +60,12 @@ class ParkingSpot extends Resource
                 'vacant' => 'Vacant',
                 'reserved' => 'Reserved',
             ])->rules('required'),
+            Text::make('Latitude')->onlyOnDetail(),
+            Text::make('Longitude')->onlyOnDetail(),
+            Text::make('Land Mark')->onlyOnDetail(),
             BelongsTo::make('Location')
                 ->rules('required'),
-            Text::make('Land Mark')
-                ->rules('required'),
-            Text::make('Latitude')
-                ->rules('required'),
-            Text::make('Longitude')
-                ->rules('required'),
+            MappingSelect::make('Mapping')->onlyOnForms(),
             HasOne::make('Pricing')
                 ->rules('required'),
             HasMany::make('Allowed'),
@@ -117,7 +117,8 @@ class ParkingSpot extends Resource
         return [];
     }
 
-    public static function label() {
+    public static function label()
+    {
         return 'Parking Spaces';
     }
 }
