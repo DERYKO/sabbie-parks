@@ -8,7 +8,7 @@ class Pricing extends Model
 {
     protected $fillable = ['parking_spot_id', 'cost_price'];
 
-    public function spot(){
+    public function parking_spot(){
         return $this->belongsTo(ParkingSpot::class);
     }
 }

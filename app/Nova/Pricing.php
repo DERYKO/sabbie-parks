@@ -45,7 +45,7 @@ class Pricing extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('ParkingSpot','spot')
+            BelongsTo::make('ParkingSpot','parking_spot')
                 ->rules('required'),
             Number::make('Cost Price')
                 ->rules('required')
