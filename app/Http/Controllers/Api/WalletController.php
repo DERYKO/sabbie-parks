@@ -15,7 +15,7 @@ class WalletController extends Controller
      */
     public function index(Request $request)
     {
-        $wallet = Wallet::where('user_id', $request->user()->id)->get();
+        $wallet = Wallet::where('user_id', $request->user()->id)->latest()->first();
         return response()->json($wallet);
     }
 

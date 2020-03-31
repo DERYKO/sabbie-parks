@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/nova-theme-responsive.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/nova-theme-responsive.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova/resources/views/auth/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova/resources/views/auth/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova/resources/views/dashboard/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova/resources/views/dashboard/navigation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova/resources/views/resources/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova/resources/views/resources/navigation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/WalletController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/WalletController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +215,8 @@
       <workItem from="1584968131654" duration="1752000" />
       <workItem from="1585128852484" duration="3177000" />
       <workItem from="1585206174724" duration="10000" />
-      <workItem from="1585411124884" duration="15083000" />
+      <workItem from="1585411124884" duration="18749000" />
+      <workItem from="1585551242869" duration="12000" />
     </task>
     <servers />
   </component>
@@ -233,17 +232,17 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1584904235141" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1585206176120">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1585551245611">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585206176120" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1585551245611" />
     <state x="657" y="253" key="run.anything.popup" timestamp="1582985539176">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1582985539176" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1584898239496">
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1585471972121">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1584898239496" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1585471972121" />
   </component>
 </project>

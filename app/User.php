@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'title', 'first_name', 'last_name', 'device_token', 'email', 'preferred_notification_channel', 'phone_number', 'code',
+        'title', 'first_name', 'last_name', 'device_token', 'email', 'preferred_notification_channel', 'phone_number', 'code', 'password'
     ];
 
     /**
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'remember_token',
+        'remember_token', 'password'
     ];
 
     public function wallet()

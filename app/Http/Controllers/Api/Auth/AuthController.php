@@ -7,6 +7,7 @@ use App\User;
 use App\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -22,13 +23,13 @@ class AuthController extends Controller
             $user->update([
                 'code' => $code
             ]);
-            Auth::login($user);
             $token = $user->createToken('auth_token')->accessToken;
             return response()->json(['user' => $user, 'token' => $token, 'status' => 'existing']);
         } else {
             $new = User::create([
                 'phone_number' => $request->phone_number,
-                'code' => $code
+                'code' => $code,
+                'password' => Hash::make($request->phone_number)
             ]);
             Wallet::create([
                 'user_id' => $new->id,
