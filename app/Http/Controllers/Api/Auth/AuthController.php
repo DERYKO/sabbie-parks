@@ -14,8 +14,8 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $this->validate($request,[
-           'phone_number' => ['required']
+        $this->validate($request, [
+            'phone_number' => ['required']
         ]);
         $user = User::where('phone_number', $request->phone_number)->first(['first_name', 'last_name', 'phone_number', 'email']);
         $code = rand(1000, 9999);
@@ -23,8 +23,7 @@ class AuthController extends Controller
             $user->update([
                 'code' => $code
             ]);
-            $token = $user->createToken('auth_token')->accessToken;
-            return response()->json(['user' => $user, 'token' => $token, 'status' => 'existing']);
+            return response()->json(['user' => $user, 'status' => 'existing']);
         } else {
             $new = User::create([
                 'phone_number' => $request->phone_number,
@@ -38,10 +37,23 @@ class AuthController extends Controller
                 'credit' => 0.0,
                 'balance' => 0.0
             ]);
-            $token = $new->createToken('auth_token')->accessToken;
-            return response()->json(['user' => $new, 'token' => $token, 'status' => 'new customer']);
+            return response()->json(['user' => $new, 'status' => 'new']);
         }
 
+    }
+
+    public function codeValidation(Request $request)
+    {
+        $this->validate($request,[
+           'code' => ['required']
+        ]);
+        $user = User::where('phone_number', $request->phone_number)->first(['code','first_name', 'last_name', 'phone_number', 'email']);
+        if ($user->code == $request->code) {
+            $token = $user->createToken('access_token')->access_token;
+            return response()->json(['user' => $user, 'token' => $token]);
+        }else{
+            return response()->json(['message' => 'Invalid code'])->setStatusCode(404);
+        }
     }
 
     public function logout(Request $request)
