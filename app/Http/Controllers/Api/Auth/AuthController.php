@@ -23,7 +23,7 @@ class AuthController extends Controller
             User::where('phone_number', $request->phone_number)->update([
                 'code' => $code
             ]);
-            return response()->json(['user' => $user, 'status' => 'existing']);
+            return response()->json(['user' => User::where('phone_number', $request->phone_number)->first(['code','first_name', 'last_name', 'phone_number', 'email']), 'status' => 'existing']);
         } else {
             $new = User::create([
                 'phone_number' => $request->phone_number,
