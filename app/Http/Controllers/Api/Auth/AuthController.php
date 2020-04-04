@@ -49,7 +49,7 @@ class AuthController extends Controller
         ]);
         $user = User::where('phone_number', $request->phone_number)->first(['code','first_name', 'last_name', 'phone_number', 'email']);
         if ($user->code == $request->code) {
-            $token = $user->createToken('access_token')->access_token;
+            $token = $user->createToken('MyApp')-> accessToken;
             return response()->json(['user' => $user, 'token' => $token]);
         }else{
             return response()->json(['message' => 'Invalid code'])->setStatusCode(404);
