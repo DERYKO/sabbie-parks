@@ -17,10 +17,10 @@ class AuthController extends Controller
         $this->validate($request, [
             'phone_number' => ['required']
         ]);
-        $user = User::where('phone_number', $request->phone_number)->first(['first_name', 'last_name', 'phone_number', 'email']);
+        $user = User::where('phone_number', $request->phone_number)->first(['code','first_name', 'last_name', 'phone_number', 'email']);
         $code = rand(1000, 9999);
         if ($user) {
-            $user->update([
+            User::where('phone_number', $request->phone_number)->update([
                 'code' => $code
             ]);
             return response()->json(['user' => $user, 'status' => 'existing']);
