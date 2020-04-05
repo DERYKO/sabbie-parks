@@ -37,7 +37,7 @@ class AuthController extends Controller
                 'credit' => 0.0,
                 'balance' => 0.0
             ]);
-            return response()->json(['user' => User::findOrfail($new->id)->first(['id','code','first_name', 'last_name', 'phone_number', 'email']), 'status' => 'new']);
+            return response()->json(['user' => User::where('id',$new->id)->first(['id','code','first_name', 'last_name', 'phone_number', 'email']), 'status' => 'new']);
         }
 
     }
