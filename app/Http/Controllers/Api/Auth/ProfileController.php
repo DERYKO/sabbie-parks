@@ -22,7 +22,14 @@ class ProfileController extends Controller
             'reservation.vehicle:id,registration_number,color',
             'reservation.parking_spot:id,client_id,parking_parking_spot_code,client_id,status,land_mark,latitude,longitude',
             'reservation.parking_spot.client:id,logo,name'
-        )->select(['id','first_name','last_name','email','phone_number'])->findOrfail($request->user()->id);
+        )->select(['id', 'first_name', 'last_name', 'email', 'phone_number'])->findOrfail($request->user()->id);
         return response()->json($user);
+    }
+
+    public function store(Request $request)
+    {
+        $user = User::findOrfail($request->user()->id);
+        $user->update($request->only('title', 'first_name', 'last_name', 'email'));
+        return response()->json(['user' => $user, 'message' => 'success']);
     }
 }
