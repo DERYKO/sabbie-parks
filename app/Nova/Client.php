@@ -52,10 +52,8 @@ class Client extends Resource
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
-            BelongsTo::make('Region')
-                ->rules('required'),
-            BelongsTo::make('location')
-                ->rules('required'),
+            BelongsTo::make('Region'),
+            BelongsTo::make('location'),
             Text::make('Phone Number', 'telephone_no')
                 ->sortable()
                 ->rules('required', 'max:255'),

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ParkingSpot extends Model
 {
-    protected $fillable = ['parking_spot_code', 'client_id', 'status', 'latitude', 'longitude', 'land_mark'];
+    protected $fillable = ['parking_spot_code','location_id', 'client_id', 'status', 'latitude', 'longitude', 'land_mark'];
 
     public function client()
     {
