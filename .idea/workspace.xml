@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/ParkingSpot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/ParkingSpot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ParkingSpot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ParkingSpot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_29_091734_create_parking_spots_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_29_091734_create_parking_spots_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +219,9 @@
       <workItem from="1585411124884" duration="18749000" />
       <workItem from="1585551242869" duration="12000" />
       <workItem from="1585945987346" duration="2443000" />
-      <workItem from="1586018911229" duration="8814000" />
+      <workItem from="1586018911229" duration="10252000" />
+      <workItem from="1586108845180" duration="8311000" />
+      <workItem from="1586183138617" duration="719000" />
     </task>
     <servers />
   </component>
@@ -231,17 +237,17 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1584904235141" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1586018916044">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1586189709991">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1586018916044" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1586189709991" />
     <state x="657" y="253" key="run.anything.popup" timestamp="1582985539176">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1582985539176" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1586085677721">
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1586110718553">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1586085677721" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1586110718553" />
   </component>
 </project>
