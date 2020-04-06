@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/ParkingSpot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/ParkingSpot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ParkingSpot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ParkingSpot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_29_091734_create_parking_spots_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_29_091734_create_parking_spots_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,6 +217,7 @@
       <workItem from="1586018911229" duration="10252000" />
       <workItem from="1586108845180" duration="8311000" />
       <workItem from="1586183138617" duration="719000" />
+      <workItem from="1586189696788" duration="1540000" />
     </task>
     <servers />
   </component>

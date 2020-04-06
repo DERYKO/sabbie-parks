@@ -16,8 +16,8 @@ class SpotController extends Controller
      */
     public function index(Request $request)
     {
-        $location = Location::where('name', $request->location)->first();
-        $spots = ParkingSpot::where('status', 'vacant')->where('location_id', $location->id)->with('client:id,name')->get(['parking_spot_code', 'land_mark', 'latitude', 'longitude']);
+
+        $spots = ParkingSpot::with('client:id,name')->get(['id','parking_spot_code', 'land_mark', 'latitude', 'longitude']);
         return response()->json($spots);
     }
 
