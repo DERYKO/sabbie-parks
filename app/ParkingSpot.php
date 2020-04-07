@@ -22,6 +22,6 @@ class ParkingSpot extends Model
         return $this->belongsTo(Location::class);
     }
     public function pricing(){
-        return $this->hasOne(Pricing::class);
+        return $this->hasOne(Pricing::class,'parking_spot_id','id');
     }
 }
