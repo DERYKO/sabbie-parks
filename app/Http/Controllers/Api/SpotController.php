@@ -17,7 +17,7 @@ class SpotController extends Controller
     public function index(Request $request)
     {
 
-        $spots = ParkingSpot::with('client:id,name')->get(['id','parking_spot_code', 'land_mark', 'latitude', 'longitude']);
+        $spots = ParkingSpot::whereHas('pricing')->with('client:id,name','pricing:id,parking_spot_id,cost_price')->get(['id','client_id','parking_spot_code', 'land_mark', 'latitude', 'longitude']);
         return response()->json($spots);
     }
 
