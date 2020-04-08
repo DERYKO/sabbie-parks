@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SpotController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SpotController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ParkingSpot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ParkingSpot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/ParkingSpotAddress.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/ParkingSpotAddress.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/ParkingSpot.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/ParkingSpot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_29_091734_create_parking_spots_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_29_091734_create_parking_spots_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +221,9 @@
       <workItem from="1586108845180" duration="8311000" />
       <workItem from="1586183138617" duration="719000" />
       <workItem from="1586189696788" duration="3508000" />
-      <workItem from="1586284046757" duration="530000" />
+      <workItem from="1586284046757" duration="1952000" />
+      <workItem from="1586328644398" duration="10000" />
+      <workItem from="1586352682898" duration="2767000" />
     </task>
     <servers />
   </component>
@@ -236,10 +239,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1584904235141" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1586189709991">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1586328644832">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1586189709991" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1586328644832" />
     <state x="657" y="253" key="run.anything.popup" timestamp="1582985539176">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

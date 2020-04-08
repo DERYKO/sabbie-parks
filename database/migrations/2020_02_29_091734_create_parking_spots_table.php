@@ -21,11 +21,7 @@ class CreateParkingSpotsTable extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->string('land_mark');
-            $table->integer('location_id')->unsigned()->nullable();
             $table->timestamps();
-            $table->foreign('location_id')
-                ->references('id')
-                ->on('locations');
         });
     }
 
