@@ -2,9 +2,14 @@
 
 namespace App\Jobs;
 
+use App\AdministrativeAreaLevel1;
+use App\AdministrativeAreaLevel2;
+use App\AdministrativeAreaLevel3;
+use App\AdministrativeAreaLevel4;
 use App\Location;
 use App\ParkingSpot;
 use App\Region;
+use App\SubLocality;
 use Http\Adapter\Guzzle6\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -40,46 +45,41 @@ class ParkingSpotAddress implements ShouldQueue
         $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $this->parking_spot->latitude . ',' . $this->parking_spot->longitude . '&key=AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58');
         $response = $response->getBody()->getContents();
         $result = json_decode($response);
-        $country = null;
-        $region = null;
-        collect($result->results)->reverse()->each(function ($item) use ($region,$country){
-            if (collect($item->types)->contains('country')) {
-                $country = $item->formatted_address;
-            }
-            if (collect($item->types)->contains('administrative_area_level_1')) {
+        collect($result->results)->reverse()->each(function ($item){
+            if (collect($item->types)->contains('locality')) {
                 Region::updateOrCreate([
-                    'country_code' => $country ? $country : 'KENYA',
+                    'country_code' => 'ke',
                     'name' => $item->formatted_address
                 ]);
-                $region = Region::where('name',$item->formatted_address)->first();
             }
-            Log::info(json_encode($item));
-            Log::info($country);
+            if (collect($item->types)->contains('administrative_area_level_1')) {
+                AdministrativeAreaLevel1::updateOrCreate([
+                    'parking_spot_id' => $this->parking_spot->id,
+                    'formatted_address' => $item->formatted_address
+                ]);
+            }
             if (collect($item->types)->contains('sublocality')) {
-                Location::updateOrCreate([
-                    'region_id' => $region ? $region->id : null,
-                    'name' => $item->formatted_address
+                SubLocality::updateOrCreate([
+                    'parking_spot_id' => $this->parking_spot->id,
+                    'formatted_address' => $item->formatted_address
                 ]);
             }
             if (collect($item->types)->contains('administrative_area_level_2')) {
-                Location::updateOrCreate([
-                    'region_id' => $region ? $region->id : null,
-                    'name' => $item->formatted_address
+                AdministrativeAreaLevel2::updateOrCreate([
+                    'parking_spot_id' => $this->parking_spot->id,
+                    'formatted_address' => $item->formatted_address
                 ]);
             }
             if (collect($item->types)->contains('administrative_area_level_3')) {
-                $location = Location::updateOrCreate([
-                    'region_id' => $region ? $region->id : null,
-                    'name' => $item->formatted_address
-                ]);
-                $this->parking_spot->update([
-                    'location_id' => $location->id,
+                AdministrativeAreaLevel3::updateOrCreate([
+                    'parking_spot_id' => $this->parking_spot->id,
+                    'formatted_address' => $item->formatted_address
                 ]);
             }
             if (collect($item->types)->contains('administrative_area_level_4')) {
-                Location::updateOrCreate([
-                    'region_id' => $region ? $region->id : null,
-                    'name' => $item->formatted_address
+                AdministrativeAreaLevel4::updateOrCreate([
+                    'parking_spot_id' => $this->parking_spot->id,
+                    'formatted_address' => $item->formatted_address
                 ]);
             }
         });

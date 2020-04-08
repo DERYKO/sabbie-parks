@@ -17,10 +17,6 @@ class ParkingSpot extends Model
     {
         return $this->hasMany(Allowed::class);
     }
-
-    public function location(){
-        return $this->belongsTo(Location::class);
-    }
     public function pricing(){
         return $this->hasOne(Pricing::class,'parking_spot_id','id');
     }

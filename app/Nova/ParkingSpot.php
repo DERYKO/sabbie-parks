@@ -63,7 +63,6 @@ class ParkingSpot extends Resource
             Text::make('Latitude')->onlyOnDetail(),
             Text::make('Longitude')->onlyOnDetail(),
             Text::make('Land Mark')->onlyOnDetail(),
-            BelongsTo::make('Location'),
             MappingSelect::make('Mapping')->onlyOnForms(),
             HasOne::make('Pricing')
                 ->rules('required'),
