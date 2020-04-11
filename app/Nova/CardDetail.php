@@ -60,7 +60,9 @@ class CardDetail extends Resource
             Text::make('CVS','cvs_number')
                 ->sortable()
                 ->rules('required', 'max:255'),
-            Date::make('Expiry Date','expiry_date'),
+            Text::make('Expiry Date','expiry_date')
+                ->sortable()
+                ->rules('required', 'max:255'),
         ];
     }
 
