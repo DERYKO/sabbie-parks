@@ -60,7 +60,7 @@ class CreditCardController extends Controller
     {
         $card = CardDetail::findOrfail($id);
         $card->update($request->only('card_type', 'card_number', 'holders_name', 'cvs_number', 'expiry_date'));
-        return response()->json($card);
+        return response()->json(CardDetail::findOrfail($id));
     }
 
     /**
