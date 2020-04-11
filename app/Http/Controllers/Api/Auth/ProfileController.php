@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -28,8 +30,15 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->has('profile')){
+            $image = $request->profile['image'];
+            $name = $request->profile['name'];
+            $realImage = base64_decode($image);
+            $path = Storage::disk('public')->put($name,$realImage);
+            $request['avatar'] = $path;
+        }
         $user = User::findOrfail($request->user()->id);
-        $user->update($request->only('title', 'first_name', 'last_name', 'email'));
+        $user->update($request->only('avatar','title', 'first_name', 'last_name', 'email'));
         return response()->json(['user' => $user, 'message' => 'success']);
     }
 }
