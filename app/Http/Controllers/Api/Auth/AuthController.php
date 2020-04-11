@@ -17,13 +17,13 @@ class AuthController extends Controller
         $this->validate($request, [
             'phone_number' => ['required']
         ]);
-        $user = User::where('phone_number', $request->phone_number)->first(['id','code','first_name', 'last_name', 'phone_number', 'email']);
+        $user = User::where('phone_number', $request->phone_number)->first(['id','title','code','first_name', 'last_name', 'phone_number', 'email']);
         $code = rand(1000, 9999);
         if ($user) {
             User::where('phone_number', $request->phone_number)->update([
                 'code' => $code
             ]);
-            return response()->json(['user' => User::where('phone_number', $request->phone_number)->first(['id','code','first_name', 'last_name', 'phone_number', 'email']), 'status' => 'existing']);
+            return response()->json(['user' => User::where('phone_number', $request->phone_number)->first(['id','title','code','first_name', 'last_name', 'phone_number', 'email']), 'status' => 'existing']);
         } else {
             $new = User::create([
                 'phone_number' => $request->phone_number,
@@ -37,7 +37,7 @@ class AuthController extends Controller
                 'credit' => 0.0,
                 'balance' => 0.0
             ]);
-            return response()->json(['user' => User::where('id',$new->id)->first(['id','code','first_name', 'last_name', 'phone_number', 'email']), 'status' => 'new']);
+            return response()->json(['user' => User::where('id',$new->id)->first(['id','title','code','first_name', 'last_name', 'phone_number', 'email']), 'status' => 'new']);
         }
 
     }
