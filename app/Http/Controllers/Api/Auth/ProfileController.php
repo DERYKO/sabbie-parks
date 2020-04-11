@@ -34,8 +34,8 @@ class ProfileController extends Controller
             $image = $request->profile['image'];
             $name = $request->profile['name'];
             $realImage = base64_decode($image);
-            $path = Storage::disk('public')->put($name,$realImage);
-            $request['avatar'] = $path;
+            Storage::disk('public')->put($name,$realImage);
+            $request['avatar'] = $name;
         }
         $user = User::findOrfail($request->user()->id);
         $user->update($request->only('avatar','title', 'first_name', 'last_name', 'email'));
