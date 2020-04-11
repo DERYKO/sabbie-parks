@@ -27,7 +27,14 @@ class CreditCardController extends Controller
      */
     public function store(Request $request)
     {
-        $card = CardDetail::create($request->only('user_id', 'card_type', 'card_number', 'holders_name', 'cvs_number', 'expiry_date'));
+        $card = CardDetail::create([
+            'user_id' => $request->user()->id,
+            'card_type' => $request->card_type,
+            'card_number' => $request->card_number,
+            'holders_name' => $request->holders_name,
+            'cvs_number' => $request->cvs_number,
+            'expiry_date' => $request->expiry_date
+        ]);
         return response()->json($card);
     }
 
