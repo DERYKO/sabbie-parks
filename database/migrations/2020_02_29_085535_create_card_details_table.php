@@ -20,7 +20,7 @@ class CreateCardDetailsTable extends Migration
             $table->string('card_number');
             $table->string('holders_name');
             $table->string('cvs_number');
-            $table->date('expiry_date');
+            $table->string('expiry_date');
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')
