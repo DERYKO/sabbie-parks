@@ -27,9 +27,9 @@ class SpotController extends Controller
         $level2 = collect($result->results)->reverse()->filter(function ($item) {
             return collect($item->types)->contains('administrative_area_level_2');
         })->first()->formatted_address;
-//        $level3 = collect($result->results)->reverse()->filter(function ($item) {
-//            return collect($item->types)->contains('administrative_area_level_3');
-//        })->first()->formatted_address;
+        $level3 = collect($result->results)->reverse()->filter(function ($item) {
+            return collect($item->types)->contains('administrative_area_level_3');
+        })->first()->formatted_address;
 //        $level4 = collect($result->results)->reverse()->filter(function ($item) {
 //            return collect($item->types)->contains('administrative_area_level_4');
 //        })->first()->formatted_address;
@@ -37,8 +37,8 @@ class SpotController extends Controller
 //            ->whereHas('level3', function ($q) use ($level3) {
 //                $q->where('formatted_address', 'like', '%' . $level3 . '%');
 //            })
-            ->whereHas('level1', function ($q) use ($level1) {
-                $q->where('formatted_address', 'like', '%' . $level1 . '%');
+            ->whereHas('level3', function ($q) use ($level3) {
+                $q->where('formatted_address', 'like', '%' . $level3 . '%');
             })
             ->with('client:id,name,logo', 'pricing:id,parking_spot_id,cost_price')
             ->get(['id', 'client_id', 'parking_spot_code', 'land_mark', 'latitude', 'longitude']);
