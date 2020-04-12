@@ -13,7 +13,7 @@ class ProfileController extends Controller
     public function index(Request $request)
     {
         $user = User::with(
-            'wallet:id,balance,created_at',
+            'wallet:id,user_id,balance,created_at',
             'vehicles:id,registration_no,color',
             'card_details:id,card_type,card_number,holders_name,cvs_number,expiry_date',
             'booking:id,parking_spot_id,expiry_time,inconvenience_fee,registration_number,color,user_vehicle_id,scheduled_book_time',

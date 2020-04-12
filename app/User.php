@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     public function wallet()
     {
-        return $this->hasMany(Wallet::class);
+        return $this->hasMany(Wallet::class,'id','user_id')->latest()->first();
     }
 
     public function vehicles()
