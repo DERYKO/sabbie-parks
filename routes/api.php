@@ -26,6 +26,7 @@ $myapp->version('v1', function ($api) {
         });
         $api->resource('/spot', 'SpotController');
         $api->group(['middleware' => ['auth:api']], function (Router $api) {
+            $api->resource('/vehicle-type','VehicleTypeController');
             $api->resource('/card','CreditCardController');
             $api->get('/logout', 'Auth\\AuthController@logout');
             $api->resource('/profile', 'Auth\\ProfileController');

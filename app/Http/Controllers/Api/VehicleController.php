@@ -15,7 +15,7 @@ class VehicleController extends Controller
      */
     public function index(Request $request)
     {
-        $vehicles = UserVehicle::where('user_id', $request->user()->id)->get();
+        $vehicles = UserVehicle::with('vehicle_type:icon,name')->where('user_id', $request->user()->id)->get();
         return response()->json($vehicles);
     }
 
