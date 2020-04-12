@@ -24,12 +24,12 @@ $myapp->version('v1', function ($api) {
             $spots = ParkingSpot::with('client:id,name')->get(['id','client_id','parking_spot_code', 'land_mark', 'latitude', 'longitude']);
             return response()->json($spots);
         });
+        $api->resource('/spot', 'SpotController');
         $api->group(['middleware' => ['auth:api']], function (Router $api) {
             $api->resource('/card','CreditCardController');
             $api->get('/logout', 'Auth\\AuthController@logout');
             $api->resource('/profile', 'Auth\\ProfileController');
             $api->resource('/client', 'ClientController');
-            $api->resource('/spot', 'SpotController');
             $api->resource('/booking', 'BookingController');
             $api->resource('/reservation', 'ReservationController');
             $api->resource('/allowed', 'AllowedController');
