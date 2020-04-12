@@ -21,6 +21,9 @@ class SpotController extends Controller
         $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request->latitude . ',' . $request->longitude . '&key=AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58');
         $response = $response->getBody()->getContents();
         $result = json_decode($response);
+        $level1 = collect($result->results)->reverse()->filter(function ($item) {
+            return collect($item->types)->contains('administrative_area_level_1');
+        })->first()->formatted_address;
         $level2 = collect($result->results)->reverse()->filter(function ($item) {
             return collect($item->types)->contains('administrative_area_level_2');
         })->first()->formatted_address;
@@ -34,8 +37,8 @@ class SpotController extends Controller
 //            ->whereHas('level3', function ($q) use ($level3) {
 //                $q->where('formatted_address', 'like', '%' . $level3 . '%');
 //            })
-            ->whereHas('level2', function ($q) use ($level2) {
-                $q->where('formatted_address',$level2);
+            ->whereHas('level1', function ($q) use ($level1) {
+                $q->where('formatted_address',$level1);
             })
             ->with('client:id,name,logo', 'pricing:id,parking_spot_id,cost_price')
             ->get(['id', 'client_id', 'parking_spot_code', 'land_mark', 'latitude', 'longitude']);

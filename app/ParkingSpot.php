@@ -22,6 +22,10 @@ class ParkingSpot extends Model
     {
         return $this->hasOne(Pricing::class, 'parking_spot_id', 'id');
     }
+    public function level1()
+    {
+        return $this->belongsTo(AdministrativeAreaLevel1::class,'id','parking_spot_id');
+    }
 
     public function level2()
     {
