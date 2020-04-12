@@ -21,13 +21,12 @@ class SpotController extends Controller
         $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request->latitude . ',' . $request->longitude . '&key=AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58');
         $response = $response->getBody()->getContents();
         $result = json_decode($response);
-        $level3 = collect($result->results)->reverse()->filter(function ($item)  {
-           return collect($item->types)->contains('administrative_area_level_3');
+        $level3 = collect($result->results)->reverse()->filter(function ($item) {
+            return collect($item->types)->contains('administrative_area_level_3');
         })->first()->formatted_address;
-        $level4 = collect($result->results)->reverse()->filter(function ($item)  {
+        $level4 = collect($result->results)->reverse()->filter(function ($item) {
             return collect($item->types)->contains('administrative_area_level_4');
         })->first()->formatted_address;
-        dd($level3,$level4);
         $spots = ParkingSpot::whereHas('pricing')
             ->whereHas('level3', function ($q) use ($level3) {
                 $q->where('formatted_address', 'like', '%' . $level3 . '%');
