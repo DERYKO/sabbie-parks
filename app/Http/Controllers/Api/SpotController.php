@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Location;
 use App\ParkingSpot;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class SpotController extends Controller
@@ -16,7 +17,9 @@ class SpotController extends Controller
      */
     public function index(Request $request)
     {
-
+        $client = new Client();
+        $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request->coordinates->latitude . ',' . $request->coordinates->longitude . '&key=AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58');
+        $response = $response->getBody()->getContents();
         $spots = ParkingSpot::whereHas('pricing')->with('client:id,name,logo','pricing:id,parking_spot_id,cost_price')->get(['id','client_id','parking_spot_code', 'land_mark', 'latitude', 'longitude']);
         return response()->json($spots);
     }
