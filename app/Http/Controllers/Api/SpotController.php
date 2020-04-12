@@ -31,6 +31,7 @@ class SpotController extends Controller
                 $level4 = $item->formatted_address;
             }
         });
+        dd($level3,$level4);
         $spots = ParkingSpot::whereHas('pricing')
             ->whereHas('level3', function ($q) use ($level3) {
                 $q->where('formatted_address', 'like', '%' . $level3 . '%');
