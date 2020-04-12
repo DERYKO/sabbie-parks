@@ -25,11 +25,11 @@ class ParkingSpot extends Model
 
     public function level3()
     {
-        return $this->belongsTo(AdministrativeAreaLevel3::class);
+        return $this->belongsTo(AdministrativeAreaLevel3::class,'id','parking_spot_id');
     }
 
     public function level4()
     {
-        return $this->belongsTo(AdministrativeAreaLevel4::class);
+        return $this->belongsTo(AdministrativeAreaLevel4::class,'id','parking_spot_id');
     }
 }
