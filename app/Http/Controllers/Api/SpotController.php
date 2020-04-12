@@ -18,9 +18,28 @@ class SpotController extends Controller
     public function index(Request $request)
     {
         $client = new Client();
-        $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request->coordinates->latitude . ',' . $request->coordinates->longitude . '&key=AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58');
+        $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request->latitude . ',' . $request->longitude . '&key=AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58');
         $response = $response->getBody()->getContents();
-        $spots = ParkingSpot::whereHas('pricing')->with('client:id,name,logo','pricing:id,parking_spot_id,cost_price')->get(['id','client_id','parking_spot_code', 'land_mark', 'latitude', 'longitude']);
+        $result = json_decode($response);
+        $level3 = null;
+        $level4 = null;
+        collect($result->results)->reverse()->each(function ($item) use ($level3, $level4) {
+            if (collect($item->types)->contains('administrative_area_level_3')) {
+                $level3 = $item->formatted_address;
+            }
+            if (collect($item->types)->contains('administrative_area_level_4')) {
+                $level4 = $item->formatted_address;
+            }
+        });
+        $spots = ParkingSpot::whereHas('pricing')
+            ->whereHas('level3', function ($q) use ($level3) {
+                $q->where('formatted_address', 'like', '%' . $level3 . '%');
+            })
+            ->whereHas('level4', function ($q) use ($level4) {
+                $q->where('formatted_address', 'like', '%' . $level4 . '%');
+            })
+            ->with('client:id,name,logo', 'pricing:id,parking_spot_id,cost_price')
+            ->get(['id', 'client_id', 'parking_spot_code', 'land_mark', 'latitude', 'longitude']);
         return response()->json($spots);
     }
 
@@ -65,8 +84,8 @@ class SpotController extends Controller
     public function update(Request $request, $id)
     {
         $spot = ParkingSpot::findOrFail($id);
-        $spot->update($request->only('parking_spot_code','status','latitude','longitude','land_mark'));
-        return  $this->index($request);
+        $spot->update($request->only('parking_spot_code', 'status', 'latitude', 'longitude', 'land_mark'));
+        return $this->index($request);
     }
 
     /**
