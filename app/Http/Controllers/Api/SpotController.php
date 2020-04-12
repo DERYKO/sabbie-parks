@@ -30,12 +30,13 @@ class SpotController extends Controller
         $level4 = collect($result->results)->reverse()->filter(function ($item) {
             return collect($item->types)->contains('administrative_area_level_4');
         })->first()->formatted_address;
+        dd($level2);
         $spots = ParkingSpot::whereHas('pricing')
 //            ->whereHas('level3', function ($q) use ($level3) {
 //                $q->where('formatted_address', 'like', '%' . $level3 . '%');
 //            })
             ->whereHas('level2', function ($q) use ($level2) {
-                $q->where('formatted_address', 'like', '%' . $level2 . '%');
+                $q->where('formatted_address',$level2);
             })
             ->with('client:id,name,logo', 'pricing:id,parking_spot_id,cost_price')
             ->get(['id', 'client_id', 'parking_spot_code', 'land_mark', 'latitude', 'longitude']);
