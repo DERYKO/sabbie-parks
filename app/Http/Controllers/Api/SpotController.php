@@ -17,7 +17,6 @@ class SpotController extends Controller
      */
     public function index(Request $request)
     {
-        return $request->all();
         $client = new Client();
         $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request->latitude . ',' . $request->longitude . '&key=AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58');
         $response = $response->getBody()->getContents();
@@ -39,7 +38,7 @@ class SpotController extends Controller
 //                $q->where('formatted_address', 'like', '%' . $level3 . '%');
 //            })
             ->whereHas('level1', function ($q) use ($level1) {
-                $q->where('formatted_address',$level1);
+                $q->where('formatted_address', 'like', '%' . $level1 . '%');
             })
             ->with('client:id,name,logo', 'pricing:id,parking_spot_id,cost_price')
             ->get(['id', 'client_id', 'parking_spot_code', 'land_mark', 'latitude', 'longitude']);
