@@ -28,9 +28,9 @@ class SpotController extends Controller
             return collect($item->types)->contains('administrative_area_level_4');
         })->first()->formatted_address;
         $spots = ParkingSpot::whereHas('pricing')
-            ->whereHas('level3', function ($q) use ($level3) {
-                $q->where('formatted_address', 'like', '%' . $level3 . '%');
-            })
+//            ->whereHas('level3', function ($q) use ($level3) {
+//                $q->where('formatted_address', 'like', '%' . $level3 . '%');
+//            })
             ->whereHas('level4', function ($q) use ($level4) {
                 $q->where('formatted_address', 'like', '%' . $level4 . '%');
             })
