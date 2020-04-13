@@ -73,7 +73,7 @@ class MpesaController extends Controller
         $Amount = $request->input('amount');
         $PartyA = $user->phone_number;
         $PartyB = 174379;
-        $PhoneNumber = $request->user()->phone_number;
+        $PhoneNumber = substr($request->user()->phone_number,1);
         $CallBackURL = 'http://159.89.88.97/api/v1/transactions';
         $AccountReference = 'SabbieParks';
         $TransactionDesc = 'Testing';
