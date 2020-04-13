@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Booking.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Collection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/MpesaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/MpesaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_29_100352_create_collections_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_29_100352_create_collections_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,6 +227,7 @@
       <workItem from="1586352682898" duration="3076000" />
       <workItem from="1586415123078" duration="22000" />
       <workItem from="1586609419471" duration="30238000" />
+      <workItem from="1586793911931" duration="2446000" />
     </task>
     <servers />
   </component>
