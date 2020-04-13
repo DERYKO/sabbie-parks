@@ -71,7 +71,7 @@ class MpesaController extends Controller
         $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType = 'CustomerPayBillOnline';
         $Amount = $request->input('amount');
-        $PartyA = $user->phone_number;
+        $PartyA = substr($request->user()->phone_number,1);
         $PartyB = 174379;
         $PhoneNumber = substr($request->user()->phone_number,1);
         $CallBackURL = 'http://159.89.88.97/api/v1/transactions';
