@@ -18,26 +18,33 @@ class ParkingSpot extends Model
         return $this->hasMany(Allowed::class);
     }
 
+    public function feature()
+    {
+        return $this->hasMany(Feature::class, 'id', 'parking_spot_id');
+    }
+
     public function pricing()
     {
         return $this->hasOne(Pricing::class, 'parking_spot_id', 'id');
     }
+
     public function level1()
     {
-        return $this->belongsTo(AdministrativeAreaLevel1::class,'id','parking_spot_id');
+        return $this->belongsTo(AdministrativeAreaLevel1::class, 'id', 'parking_spot_id');
     }
 
     public function level2()
     {
-        return $this->belongsTo(AdministrativeAreaLevel2::class,'id','parking_spot_id');
+        return $this->belongsTo(AdministrativeAreaLevel2::class, 'id', 'parking_spot_id');
     }
+
     public function level3()
     {
-        return $this->belongsTo(AdministrativeAreaLevel3::class,'id','parking_spot_id');
+        return $this->belongsTo(AdministrativeAreaLevel3::class, 'id', 'parking_spot_id');
     }
 
     public function level4()
     {
-        return $this->belongsTo(AdministrativeAreaLevel4::class,'id','parking_spot_id');
+        return $this->belongsTo(AdministrativeAreaLevel4::class, 'id', 'parking_spot_id');
     }
 }
