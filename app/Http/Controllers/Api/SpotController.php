@@ -72,7 +72,7 @@ class SpotController extends Controller
      */
     public function show($id)
     {
-        $spot = ParkingSpot::with('allowed','pricing')->findOrFail($id);
+        $spot = ParkingSpot::with('feature.security','level3','client','allowed','pricing')->findOrFail($id);
         return response()->json($spot);
     }
 
