@@ -25,9 +25,9 @@ $myapp->version('v1', function ($api) {
             return response()->json($spots);
         });
         $api->resource('/spot', 'SpotController');
-        $api->get('/lipa-na-mpesa', 'MpesaController@lipa_na_mpesa');
+        $api->post('/transactions','MpesaController@transaction_logs');
         $api->group(['middleware' => ['auth:api']], function (Router $api) {
-            $api->post('/transactions','MpesaController@transaction_logs');
+            $api->get('/lipa-na-mpesa', 'MpesaController@lipa_na_mpesa');
             $api->resource('/vehicle-type', 'VehicleTypeController');
             $api->resource('/card', 'CreditCardController');
             $api->get('/logout', 'Auth\\AuthController@logout');

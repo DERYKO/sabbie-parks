@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Collection;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 
 class MpesaController extends Controller
 {
@@ -51,14 +54,24 @@ class MpesaController extends Controller
 
     public function lipa_na_mpesa(Request $request)
     {
+        Collection::create([
+            'client_id' => $request->client_id,
+            'parking_spot_id' => $request->parking_spot_id,
+            'payment_type' => 'Mpesa',
+            'amount' => $request->amount,
+            'balance' => $request->amount,
+            'partyA' => $request->user()->phone_number,
+            'partyB' => 174379,
+            'status' => false,
+        ]);
         $access_token = self::generateToken();
         $BusinessShortCode = 174379;
         $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType = 'CustomerPayBillOnline';
         $Amount = $request->input('amount');
-        $PartyA = $request->input('phone');
+        $PartyA = $request->user()->phone_number;
         $PartyB = 174379;
-        $PhoneNumber = $request->input('phone');
+        $PhoneNumber = $request->user()->phone_number;
         $CallBackURL = 'http://159.89.88.97/api/v1/transactions';
         $AccountReference = 'SabbieParks';
         $TransactionDesc = 'Testing';
@@ -107,8 +120,8 @@ class MpesaController extends Controller
     public function transaction_logs(Request $request)
     {
         $payload = $request->json()->all();
+        Log::info(json_encode($payload));
         if ($payload) {
-
             $body = $payload['Body'];
             $stkCallback = $body['stkCallback'];
             $MerchantRequestID = $stkCallback['MerchantRequestID'];
@@ -117,28 +130,34 @@ class MpesaController extends Controller
             $ResultDesc = $stkCallback['ResultDesc'];
             $CallbackMetadata = $stkCallback['CallbackMetadata'];
             $Item = $CallbackMetadata['Item'];
-
+            $data = [];
             foreach ($Item as $paymentItem) {
                 $Name = $paymentItem['Name'];
-                //$Value=$paymentItem['Value'];
                 switch ($Name) {
                     case 'Amount':
-                        $Amount = $paymentItem['Value'];
+                        $data['amount'] = $paymentItem['Value'];
                         break;
                     case 'MpesaReceiptNumber':
-                        $TransID = $paymentItem['Value'];
+                        $data['transaction_id'] = $paymentItem['Value'];
                         break;
                     case 'Balance':
                         $Balance = 'Not Available';
                         break;
                     case 'TransactionDate':
-                        $TransactionDate = $paymentItem['Value'];
+                        $data['date'] = $paymentItem['Value'];
                         break;
                     case 'PhoneNumber':
-                        $PhoneNumber = $paymentItem['Value'];
+                        $data['phone_number'] = $paymentItem['Value'];
                         break;
                 }
             }
+            $collection = Collection::where('partyA', $data['phone_number'])->where('partyB', 174379)->where('amount', $data['amount'])->latest()->where('status', false)->first();
+            $collection->update([
+                'merchantRequestId' => $MerchantRequestID,
+                'checkoutRequestId' => $CheckoutRequestID,
+                'status' => $ResultCode == 200 ? true : false,
+                'receipt_no' => Carbon::now()->getTimestamp()
+            ]);
             return response()->json(['message' => 'Transaction complete', 'status' => 'success']);
         }
         return response()->json([
