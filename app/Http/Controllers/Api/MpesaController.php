@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Collection;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -64,12 +65,13 @@ class MpesaController extends Controller
             'partyB' => 174379,
             'status' => false,
         ]);
+        $user = User::findOrfail($request->user()->id);
         $access_token = self::generateToken();
         $BusinessShortCode = 174379;
         $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType = 'CustomerPayBillOnline';
         $Amount = $request->input('amount');
-        $PartyA = $request->user()->phone_number;
+        $PartyA = $user->phone_number;
         $PartyB = 174379;
         $PhoneNumber = $request->user()->phone_number;
         $CallBackURL = 'http://159.89.88.97/api/v1/transactions';
