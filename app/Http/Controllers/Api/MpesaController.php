@@ -52,14 +52,13 @@ class MpesaController extends Controller
     public function lipa_na_mpesa(Request $request)
     {
         $access_token = self::generateToken();
-        dd($access_token);
         $BusinessShortCode = 174379;
         $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
         $TransactionType = 'CustomerPayBillOnline';
-        $Amount = $request->get('amount');
-        $PartyA = $request->user()->phone_number;
+        $Amount = $request->input('amount');
+        $PartyA = $request->input('phone');
         $PartyB = 174379;
-        $PhoneNumber = $request->user()->phone_number;
+        $PhoneNumber = $request->input('phone');
         $CallBackURL = 'http://159.89.88.97/api/v1/transactions';
         $AccountReference = 'SabbieParks';
         $TransactionDesc = 'Testing';
