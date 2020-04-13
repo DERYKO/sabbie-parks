@@ -19,15 +19,17 @@ $myapp = app(Router::class);
 $myapp->version('v1', function ($api) {
     $api->group(['namespace' => 'App\Http\Controllers\Api', 'prefix' => 'v1'], function (Router $api) {
         $api->post('/login', 'Auth\\AuthController@login');
-        $api->post('/code','Auth\\AuthController@codeValidation');
-        $api->get('/spaces',function (){
-            $spots = ParkingSpot::with('client:id,name')->get(['id','client_id','parking_spot_code', 'land_mark', 'latitude', 'longitude']);
+        $api->post('/code', 'Auth\\AuthController@codeValidation');
+        $api->get('/spaces', function () {
+            $spots = ParkingSpot::with('client:id,name')->get(['id', 'client_id', 'parking_spot_code', 'land_mark', 'latitude', 'longitude']);
             return response()->json($spots);
         });
         $api->resource('/spot', 'SpotController');
         $api->group(['middleware' => ['auth:api']], function (Router $api) {
-            $api->resource('/vehicle-type','VehicleTypeController');
-            $api->resource('/card','CreditCardController');
+            $api->get('/lipa-na-mpesa', 'MpesaController@lipa_na_mpesa');
+            $api->post('/transactions','MpesaController@transaction_logs');
+            $api->resource('/vehicle-type', 'VehicleTypeController');
+            $api->resource('/card', 'CreditCardController');
             $api->get('/logout', 'Auth\\AuthController@logout');
             $api->resource('/profile', 'Auth\\ProfileController');
             $api->resource('/client', 'ClientController');
