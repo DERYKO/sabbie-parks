@@ -47,7 +47,8 @@ class Collection extends Resource
         return [
             ID::make()->sortable(),
             BelongsTo::make('Client'),
-            BelongsTo::make('Parking Spot'),
+            BelongsTo::make('ParkingSpot', 'parking_spot')
+                ->rules('required'),
             Text::make('Payment Type'),
             Text::make('Request Id', 'merchantRequestId'),
             Text::make('Checkout Id', 'checkoutRequestId'),

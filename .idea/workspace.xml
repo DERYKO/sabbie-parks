@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Collection.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Nova/Collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/Collection.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -227,7 +225,7 @@
       <workItem from="1586609419471" duration="30238000" />
       <workItem from="1586793911931" duration="6042000" />
       <workItem from="1586805200010" duration="58000" />
-      <workItem from="1587235672658" duration="3573000" />
+      <workItem from="1587235672658" duration="3867000" />
     </task>
     <servers />
   </component>
