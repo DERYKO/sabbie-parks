@@ -10,7 +10,7 @@ class Feature extends Model
 
     public function security()
     {
-        return $this->belongsTo(Security::class);
+        return $this->belongsTo(Security::class,'security_id','id');
     }
 
     public function parking_spot()
