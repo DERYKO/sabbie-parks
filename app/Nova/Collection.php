@@ -2,8 +2,11 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Collection extends Resource
@@ -36,20 +39,31 @@ class Collection extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
     {
         return [
             ID::make()->sortable(),
+            BelongsTo::make('Client'),
+            BelongsTo::make('Parking Spot'),
+            Text::make('Payment Type'),
+            Text::make('Request Id', 'merchantRequestId'),
+            Text::make('Checkout Id', 'checkoutRequestId'),
+            Text::make('Amount'),
+            Text::make('Party A', 'partyA'),
+            Text::make('Party B', 'partyB'),
+            Boolean::make('Status'),
+            Text::make('Receipt No'),
+            Text::make('Date', 'created_at')
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -60,7 +74,7 @@ class Collection extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -71,7 +85,7 @@ class Collection extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -82,14 +96,16 @@ class Collection extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)
     {
         return [];
     }
-    public static function label() {
+
+    public static function label()
+    {
         return 'Collection';
     }
 }
