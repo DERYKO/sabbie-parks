@@ -10,7 +10,7 @@ class ParkingSpot extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class,'client_id','id');
     }
 
     public function allowed()
@@ -20,7 +20,7 @@ class ParkingSpot extends Model
 
     public function feature()
     {
-        return $this->hasMany(Feature::class, 'id', 'parking_spot_id');
+        return $this->hasMany(Feature::class, 'parking_spot_id', 'id');
     }
 
     public function pricing()
