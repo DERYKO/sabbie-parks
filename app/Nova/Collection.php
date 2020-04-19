@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -57,7 +58,7 @@ class Collection extends Resource
             Text::make('Party B', 'partyB'),
             Boolean::make('Status'),
             Text::make('Receipt No'),
-            Text::make('Date', 'created_at')
+            DateTime::make('Date', 'created_at')
         ];
     }
 

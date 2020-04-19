@@ -16,17 +16,21 @@ class CreateCollectionsTable extends Migration
         Schema::create('collections', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('client_id')->unsigned()->nullable();
+            $table->integer('user_vehicle_id')->unsigned()->nullable();
             $table->integer('parking_spot_id')->unsigned()->nullable();
             $table->string('payment_type');
             $table->string('merchantRequestId')->nullable();
             $table->string('checkoutRequestId')->nullable();
             $table->float('amount');
-            $table->float('balance')->nullable();
             $table->string('partyA')->nullable();
             $table->string('partyB')->nullable();
-            $table->boolean('status');
+            $table->string('ResultDesc')->nullable();
+            $table->integer('status');
             $table->string('receipt_no')->nullable();
             $table->timestamps();
+            $table->foreign('user_vehicle_id')
+                ->references('user_vehicles')
+                ->on('id');
             $table->foreign('client_id')
                 ->references('id')
                 ->on('clients');
