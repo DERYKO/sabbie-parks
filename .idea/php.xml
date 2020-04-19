@@ -129,6 +129,7 @@
       <path value="$PROJECT_DIR$/vendor/example/miami-ice" />
       <path value="$PROJECT_DIR$/vendor/deryko/sabbie-theme" />
       <path value="$PROJECT_DIR$/vendor/example/miami-ice" />
+      <path value="$PROJECT_DIR$/vendor/brozot/laravel-fcm" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
