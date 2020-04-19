@@ -29,8 +29,8 @@ class CreateCollectionsTable extends Migration
             $table->string('receipt_no')->nullable();
             $table->timestamps();
             $table->foreign('user_vehicle_id')
-                ->references('user_vehicles')
-                ->on('id');
+                ->references('id')
+                ->on('user_vehicles');
             $table->foreign('client_id')
                 ->references('id')
                 ->on('clients');
