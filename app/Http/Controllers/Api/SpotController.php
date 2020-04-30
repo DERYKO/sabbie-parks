@@ -40,6 +40,7 @@ class SpotController extends Controller
             ->whereHas('level3', function ($q) use ($level3) {
                 $q->where('formatted_address', 'like', '%' . $level3 . '%');
             })
+            ->where('status','vacant')
             ->with('client:id,name,logo', 'pricing:id,parking_spot_id,cost_price')
             ->get(['id', 'client_id', 'parking_spot_code', 'land_mark', 'latitude', 'longitude']);
         return response()->json($spots);
@@ -72,7 +73,7 @@ class SpotController extends Controller
      */
     public function show($id)
     {
-        $spot = ParkingSpot::where('status','vacant')->with('feature:id,parking_spot_id,security_id','feature.security:id,icon,name','level3','client','allowed.vehicle_type','pricing')->findOrFail($id);
+        $spot = ParkingSpot::with('feature:id,parking_spot_id,security_id','feature.security:id,icon,name','level3','client','allowed.vehicle_type','pricing')->findOrFail($id);
         return response()->json($spot);
     }
 
