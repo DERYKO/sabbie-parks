@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/ProfileController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +228,8 @@
       <workItem from="1586805200010" duration="58000" />
       <workItem from="1587235672658" duration="5851000" />
       <workItem from="1587312921206" duration="9738000" />
-      <workItem from="1587920460535" duration="257000" />
+      <workItem from="1587920460535" duration="2480000" />
+      <workItem from="1588265921908" duration="607000" />
     </task>
     <servers />
   </component>
@@ -245,10 +245,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1587331197548" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1587313183618">
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1588270154542">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1587313183618" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1588270154542" />
     <state x="657" y="253" key="run.anything.popup" timestamp="1582985539176">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
