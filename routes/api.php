@@ -25,7 +25,7 @@ $myapp->version('v1', function ($api) {
             return response()->json($spots);
         });
         $api->resource('/spot', 'SpotController');
-        $api->post('/transactions','MpesaController@transaction_logs');
+        $api->post('/transactions/{id}','MpesaController@transaction_logs');
         $api->group(['middleware' => ['auth:api']], function (Router $api) {
             $api->get('/lipa-na-mpesa', 'MpesaController@lipa_na_mpesa');
             $api->resource('/vehicle-type', 'VehicleTypeController');

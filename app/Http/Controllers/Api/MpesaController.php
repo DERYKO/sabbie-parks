@@ -59,7 +59,7 @@ class MpesaController extends Controller
 
     public function lipa_na_mpesa(Request $request)
     {
-        Collection::create([
+        $c = Collection::create([
             'user_vehicle_id' => $request->user_vehicle_id,
             'client_id' => $request->client_id,
             'parking_spot_id' => $request->parking_spot_id,
@@ -77,7 +77,7 @@ class MpesaController extends Controller
         $PartyA = substr($request->user()->phone_number, 1);
         $PartyB = 174379;
         $PhoneNumber = substr($request->user()->phone_number, 1);
-        $CallBackURL = 'http://159.89.88.97/api/v1/transactions';
+        $CallBackURL = 'http://159.89.88.97/api/v1/transactions/'.$c->id;
         $AccountReference = 'SabbieParks';
         $TransactionDesc = 'Testing';
 
@@ -122,9 +122,9 @@ class MpesaController extends Controller
 
     }
 
-    public function transaction_logs(Request $request)
+    public function transaction_logs(Request $request,$id)
     {
-        $collection = Collection::latest()->first();
+        $collection = Collection::findOrfail($id);
         $user = User::where('phone_number', $collection->PartyA)->first();
         if ($request['body']['ResultCode'] === 1 || 1032) {
             $collection->update([
