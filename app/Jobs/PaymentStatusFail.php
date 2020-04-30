@@ -35,7 +35,7 @@ class PaymentStatusFail implements ShouldQueue
     public function handle()
     {
         $notificationBuilder = new PayloadNotificationBuilder('Payment status');
-        $notificationBuilder->setBody($this->message)
+        $notificationBuilder->setBody('We could not complete the transaction because, '.$this->message)
             ->setSound('default');
 
         $notification = $notificationBuilder->build();

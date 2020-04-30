@@ -124,28 +124,36 @@ class MpesaController extends Controller
 
     public function transaction_logs(Request $request,$id)
     {
+        $request = $request['Body'];
         $collection = Collection::findOrfail($id);
-        $user = User::where('phone_number', $collection->PartyA)->first();
-        if ($request['body']['ResultCode'] === 1 || 1032) {
+        $user = User::where('phone_number', $collection->partyA)->first();
+        if ($request['stkCallback']['ResultCode'] == 1) {
             $collection->update([
-                'merchantRequestId' => $request['body']['stkCallback']['MerchantRequestID'],
-                'checkoutRequestId' => $request['body']['stkCallback']['CheckoutRequestID'],
-                'ResultDesc' => $request['body']['stkCallback']['ResultDesc'],
-                'status' => $request['body']['ResultCode']
+                'merchantRequestId' => $request['stkCallback']['MerchantRequestID'],
+                'checkoutRequestId' => $request['stkCallback']['CheckoutRequestID'],
+                'ResultDesc' => $request['stkCallback']['ResultDesc'],
+                'status' => $request['stkCallback']['ResultCode']
             ]);
-            $this->dispatch_now(new PaymentStatusFail($request['body']['stkCallback']['ResultDesc'],$user));
+            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'],$user));
 
-        } elseif ($request['body']['ResultCode'] === 0) {
+        }elseif ($request['stkCallback']['ResultCode'] == 1032){
             $collection->update([
-                'merchantRequestId' => $request['body']['stkCallback']['MerchantRequestID'],
-                'checkoutRequestId' => $request['body']['stkCallback']['CheckoutRequestID'],
-                'ResultDesc' => $request['body']['stkCallback']['ResultDesc'],
-                'status' => $request['body']['ResultCode'],
-                'receipt_no' => collect($request['body']['stkCallback']['CallbackMetadata'])->filter(function ($item) {
-                    return $item->name == 'MpesaReceiptNumber';
-                })->first()->value
+                'merchantRequestId' => $request['stkCallback']['MerchantRequestID'],
+                'checkoutRequestId' => $request['stkCallback']['CheckoutRequestID'],
+                'ResultDesc' => $request['stkCallback']['ResultDesc'],
+                'status' => $request['stkCallback']['ResultCode']
             ]);
-            $parking_spot = ParkingSpot::findOrfail($collection->parking_spot_id);
+            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'],$user));
+        }
+        elseif ($request['stkCallback']['ResultCode'] == 0) {
+            $collection->update([
+                'merchantRequestId' => $request['stkCallback']['MerchantRequestID'],
+                'checkoutRequestId' => $request['stkCallback']['CheckoutRequestID'],
+                'ResultDesc' => $request['stkCallback']['ResultDesc'],
+                'status' => $request['stkCallback']['ResultCode'],
+                'receipt_no' => 78999909
+            ]);
+            $parking_spot = \App\ParkingSpot::findOrfail($collection->parking_spot_id);
             $parking_spot->update([
                 'status' => 'Occupied'
             ]);
@@ -156,7 +164,7 @@ class MpesaController extends Controller
                 'expiry_time' => 30,
                 'inconvenience_fee' => 50
             ]);
-            $this->dispatch(new PaymentStatusSuccess($request['body']['stkCallback']['ResultDesc'],$user,30,50,ParkingSpot::findOrfail($collection->parking_spot_id)));
+            $this->dispatch(new PaymentStatusSuccess($request['stkCallback']['ResultDesc'],$user,30,50,ParkingSpot::findOrfail($collection->parking_spot_id)));
         }
         return response()->json(['message' => 'Success']);
     }
