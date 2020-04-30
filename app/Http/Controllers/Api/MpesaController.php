@@ -131,7 +131,7 @@ class MpesaController extends Controller
                 'merchantRequestId' => $request['body']['stkCallback']['MerchantRequestID'],
                 'checkoutRequestId' => $request['body']['stkCallback']['CheckoutRequestID'],
                 'ResultDesc' => $request['body']['stkCallback']['ResultDesc'],
-                'status' => $request['body']['stkCallback']['ResultCode']
+                'status' => $request['body']['ResultCode']
             ]);
             $this->dispatch_now(new PaymentStatusFail($request['body']['stkCallback']['ResultDesc'],$user));
 
@@ -140,7 +140,7 @@ class MpesaController extends Controller
                 'merchantRequestId' => $request['body']['stkCallback']['MerchantRequestID'],
                 'checkoutRequestId' => $request['body']['stkCallback']['CheckoutRequestID'],
                 'ResultDesc' => $request['body']['stkCallback']['ResultDesc'],
-                'status' => $request['body']['stkCallback']['ResultCode'],
+                'status' => $request['body']['ResultCode'],
                 'receipt_no' => collect($request['body']['stkCallback']['CallbackMetadata'])->filter(function ($item) {
                     return $item->name == 'MpesaReceiptNumber';
                 })->first()->value
