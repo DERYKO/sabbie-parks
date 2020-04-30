@@ -46,7 +46,7 @@ class PaymentStatusSuccess implements ShouldQueue
             ->setSound('default');
         $notification = $notificationBuilder->build();
         $topic = new Topics();
-        $topic->topic($this->user->id);
+        $topic->topic('user'.$this->user->id);
         FCM::sendToTopic($topic, null, $notification, null);
     }
 }
