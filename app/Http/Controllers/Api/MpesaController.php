@@ -133,7 +133,7 @@ class MpesaController extends Controller
                 'ResultDesc' => $request['body']['stkCallback']['ResultDesc'],
                 'status' => $request['body']['stkCallback']['ResultCode']
             ]);
-            $this->dispatch(new PaymentStatusFail($request['body']['stkCallback']['ResultDesc'],$user));
+            $this->dispatch_now(new PaymentStatusFail($request['body']['stkCallback']['ResultDesc'],$user));
 
         } elseif ($request['body']['ResultCode'] === 0) {
             $collection->update([
