@@ -41,8 +41,8 @@ class PaymentStatusSuccess implements ShouldQueue
      */
     public function handle()
     {
-        $notificationBuilder = new PayloadNotificationBuilder('Payment status');
-        $notificationBuilder->setBody($this->message . ' Booking expires in ' . $this->expiry_time . ' which in case of an inconvenience a fee of ' . $this->fee . ' will be added to your account.')
+        $notificationBuilder = new PayloadNotificationBuilder('Payment status success');
+        $notificationBuilder->setBody($this->message . ' Booking expires in ' . $this->expiry_time . 'minutes, which in case of an inconvenience a fee of ' . $this->fee . ' will be added to your account.')
             ->setSound('default');
         $notification = $notificationBuilder->build();
         $topic = new Topics();

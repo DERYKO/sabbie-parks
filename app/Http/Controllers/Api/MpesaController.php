@@ -6,7 +6,7 @@ use App\Booking;
 use App\Collection;
 use App\Jobs\PaymentStatusFail;
 use App\Jobs\PaymentStatusSuccess;
-use App\Nova\ParkingSpot;
+use App\ParkingSpot;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -153,7 +153,7 @@ class MpesaController extends Controller
                 'status' => $request['stkCallback']['ResultCode'],
                 'receipt_no' => 78999909
             ]);
-            $parking_spot = \App\ParkingSpot::findOrfail($collection->parking_spot_id);
+            $parking_spot = ParkingSpot::findOrfail($collection->parking_spot_id);
             $parking_spot->update([
                 'status' => 'Occupied'
             ]);
