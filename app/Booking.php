@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
@@ -21,5 +22,11 @@ class Booking extends Model
     public function user_vehicle()
     {
         return $this->belongsTo(UserVehicle::class);
+    }
+    public function scopeFilterBy($q,$filters){
+        if (!isset($filters['date'])){
+            $filters['date'] = Carbon::now()->toDateString();
+        }
+        $q->whereBetween('created_at',[Carbon::parse($filters['date'])->startOfDay(),Carbon::parse($filters['date'])->endOfDay()]);
     }
 }
