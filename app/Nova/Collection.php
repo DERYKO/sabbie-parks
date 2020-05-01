@@ -47,18 +47,18 @@ class Collection extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Receipt No'),
             BelongsTo::make('UserVehicle','user_vehicle'),
             BelongsTo::make('Client'),
             BelongsTo::make('ParkingSpot', 'parking_spot')
                 ->rules('required'),
             Text::make('Payment Type'),
-            Text::make('Request Id', 'merchantRequestId'),
-            Text::make('Checkout Id', 'checkoutRequestId'),
+            Text::make('Request Id', 'merchantRequestId')->onlyOnDetail(),
+            Text::make('Checkout Id', 'checkoutRequestId')->onlyOnDetail(),
             Text::make('Amount'),
-            Text::make('Party A', 'partyA'),
-            Text::make('Party B', 'partyB'),
+            Text::make('Party A', 'partyA')->onlyOnDetail(),
+            Text::make('Party B', 'partyB')->onlyOnDetail(),
             Boolean::make('Status'),
-            Text::make('Receipt No'),
             DateTime::make('Date', 'created_at')
         ];
     }
