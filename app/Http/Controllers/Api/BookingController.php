@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Booking;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use function GuzzleHttp\Promise\all;
 
 class BookingController extends Controller
 {
@@ -15,7 +16,7 @@ class BookingController extends Controller
      */
     public function index(Request $request)
     {
-        $bookings = Booking::where('user_id', $request->user()->id)->get();
+        $bookings = Booking::FilterBy($request->all())->with('parking_spot', 'user_vehicle')->where('user_id', $request->user()->id)->get();
         return response()->json($bookings);
     }
 
@@ -47,7 +48,7 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        $booking  = Booking::findOrfail($id);
+        $booking = Booking::findOrfail($id);
         return response()->json($booking);
     }
 
@@ -60,7 +61,7 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $booking  = Booking::findOrfail($id);
+        $booking = Booking::findOrfail($id);
         $booking->update([
             'expiry_time' => $request->expiry_time,
             'registration_number' => $request->registration_number,
