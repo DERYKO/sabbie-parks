@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('parking_spot_id')->unsigned();
             $table->integer('expiry_time');
+            $table->boolean('status')->default(false);
             $table->integer('user_vehicle_id')->unsigned()->nullable();
             $table->float('inconvenience_fee')->nullable();
             $table->timestamps();

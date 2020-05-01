@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\BroadcastMessage;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
@@ -122,6 +123,6 @@ class User extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [new BroadcastMessage()];
     }
 }
