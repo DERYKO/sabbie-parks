@@ -123,6 +123,6 @@ class User extends Resource
      */
     public function actions(Request $request)
     {
-        return [new BroadcastMessage()];
+        return [new BroadcastMessage];
     }
 }
