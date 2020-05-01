@@ -47,6 +47,7 @@ class Collection extends Resource
     {
         return [
             ID::make()->sortable(),
+            BelongsTo::make('UserVehicle','user_vehicle'),
             BelongsTo::make('Client'),
             BelongsTo::make('ParkingSpot', 'parking_spot')
                 ->rules('required'),
