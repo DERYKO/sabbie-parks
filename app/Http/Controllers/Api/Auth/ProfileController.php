@@ -21,7 +21,7 @@ class ProfileController extends Controller
             'booking.parking_spot.client:id,logo,name',
             'reservation:id,parking_spot_id,registration_number,color,user_vehicle_id,start,end,cost_price',
             'reservation.vehicle:id,registration_number,color',
-            'reservation.parking_spot:id,client_id,parking_parking_spot_code,client_id,status,land_mark,latitude,longitude',
+            'reservation.parking_spot:id,client_id,parking_spot_code,client_id,status,land_mark,latitude,longitude',
             'reservation.parking_spot.client:id,logo,name'
         )->select(['title','avatar','id', 'first_name', 'last_name', 'email', 'phone_number'])->findOrfail($request->user()->id);
         return response()->json($user);
