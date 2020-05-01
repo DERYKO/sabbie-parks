@@ -17,10 +17,10 @@ class ProfileController extends Controller
             'card_details:id,card_type,card_number,holders_name,cvs_number,expiry_date',
             'booking:id,parking_spot_id,expiry_time,inconvenience_fee,user_vehicle_id',
             'booking.parking_spot:id,client_id,parking_spot_code,client_id,status,land_mark,latitude,longitude',
-            'booking.vehicle:id,registration_no,color',
+            'booking.user_vehicle:id,registration_no,color',
             'booking.parking_spot.client:id,logo,name',
             'reservation:id,parking_spot_id,registration_number,color,user_vehicle_id,start,end,cost_price',
-            'reservation.vehicle:id,registration_number,color',
+            'reservation.user_vehicle:id,registration_number,color',
             'reservation.parking_spot:id,client_id,parking_spot_code,client_id,status,land_mark,latitude,longitude',
             'reservation.parking_spot.client:id,logo,name'
         )->select(['title','avatar','id', 'first_name', 'last_name', 'email', 'phone_number'])->findOrfail($request->user()->id);
