@@ -16,7 +16,7 @@ class ProfileController extends Controller
             'vehicles:id,registration_no,color',
             'card_details:id,card_type,card_number,holders_name,cvs_number,expiry_date',
             'booking:id,parking_spot_id,expiry_time,inconvenience_fee,user_vehicle_id',
-            'booking.parking_spot:id,client_id,parking_parking_spot_code,client_id,status,land_mark,latitude,longitude',
+            'booking.parking_spot:id,client_id,parking_spot_code,client_id,status,land_mark,latitude,longitude',
             'booking.vehicle:id,registration_number,color',
             'booking.parking_spot.client:id,logo,name',
             'reservation:id,parking_spot_id,registration_number,color,user_vehicle_id,start,end,cost_price',
