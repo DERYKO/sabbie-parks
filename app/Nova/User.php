@@ -74,9 +74,9 @@ class User extends Resource
             Password::make('Password')
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
-            HasMany::make('CardDetail','card_details'),
-            HasMany::make('wallet'),
-            HasMany::make('UserVehicle','vehicles'),
+            HasMany::make('CardDetail', 'card_details'),
+            HasMany::make('wallet', 'wallets'),
+            HasMany::make('UserVehicle', 'vehicles'),
             HasMany::make('Booking'),
             HasMany::make('Reservation')
 
