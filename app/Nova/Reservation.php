@@ -40,7 +40,7 @@ class Reservation extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -49,9 +49,9 @@ class Reservation extends Resource
             ID::make()->sortable(),
             BelongsTo::make('User')
                 ->rules('required'),
-            BelongsTo::make('ParkingSpot','parking_spot')
+            BelongsTo::make('ParkingSpot', 'parking_spot')
                 ->rules('required'),
-            BelongsTo::make('UserVehicle','user_vehicle'),
+            BelongsTo::make('UserVehicle', 'user_vehicle'),
             Text::make('Registration Number'),
             Text::make('Color'),
             Date::make('Start')
@@ -66,7 +66,7 @@ class Reservation extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -77,7 +77,7 @@ class Reservation extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -88,7 +88,7 @@ class Reservation extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -99,14 +99,23 @@ class Reservation extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)
     {
         return [];
     }
-    public static function label() {
+
+    public static function label()
+    {
         return 'Reservations';
+    }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->whereHas('parking_spot', function ($q) use ($request) {
+            $q->where('client_id', $request->user()->client_id);
+        });
     }
 }

@@ -119,4 +119,9 @@ class ParkingSpot extends Resource
     {
         return 'Parking Spaces';
     }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->where('client_id', $request->user()->client_id);
+    }
 }

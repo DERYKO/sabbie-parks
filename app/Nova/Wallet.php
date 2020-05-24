@@ -115,4 +115,11 @@ class Wallet extends Resource
     {
         return false;
     }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->whereHas('user', function ($q) use ($request) {
+            $q->where('client_id', $request->user()->client_id);
+        });
+    }
 }
