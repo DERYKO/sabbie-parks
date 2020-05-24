@@ -5,12 +5,24 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Nova\Actions\Actionable;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     use Actionable, Notifiable, HasApiTokens;
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+
+            $model->client_id = Auth::user()->client_id;
+
+        });
+    }
 
     /**
      * The attributes that are mass assignable.
