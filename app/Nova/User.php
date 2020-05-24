@@ -118,7 +118,7 @@ class User extends Resource
 
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->where('client_id', $request->user()->clien_id);
+        return $query->where('client_id', $request->user()->client_id);
     }
 
     /**
