@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/MpesaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/MpesaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/WalletController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/WalletController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Nova/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/User.php" afterDir="false" />
-    </list>
+    <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -181,6 +175,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/nova/resources/js" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -238,7 +233,7 @@
       <workItem from="1588342268639" duration="6448000" />
       <workItem from="1588531358679" duration="13000" />
       <workItem from="1588622301193" duration="2313000" />
-      <workItem from="1590351156958" duration="717000" />
+      <workItem from="1590351156958" duration="1202000" />
     </task>
     <servers />
   </component>
@@ -246,10 +241,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="782" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser" timestamp="1588357236609">
+    <state x="782" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser" timestamp="1590353610166">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="782" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1588357236609" />
+    <state x="782" y="240" width="412" height="624" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1590353610166" />
     <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588624539793">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -264,10 +259,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1582985539176" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1588623936566">
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1590353705428">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053/67.27.1853.1053@67.27.1853.1053" timestamp="1588623936566" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1588344746938" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590353705428" />
   </component>
 </project>
