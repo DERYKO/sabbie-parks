@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Booking;
 use App\Collection;
+use App\Jobs\BroadcastMessage;
 use App\Jobs\PaymentStatusFail;
 use App\Jobs\PaymentStatusSuccess;
 use App\ParkingSpot;
@@ -57,28 +58,45 @@ class MpesaController extends Controller
 
 
     }
-    public function walletCallBack(Request $request,$id){
+
+    public function walletCallBack(Request $request, $id)
+    {
         $request = $request['Body'];
         $user = User::findOrfail($id);
         if ($request['stkCallback']['ResultCode'] == 1) {
-            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'],$user));
+            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'], $user));
 
-        }elseif ($request['stkCallback']['ResultCode'] == 1032){
-            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'],$user));
-        }
-        elseif ($request['stkCallback']['ResultCode'] == 0) {
+        } elseif ($request['stkCallback']['ResultCode'] == 1032) {
+            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'], $user));
+        } elseif ($request['stkCallback']['ResultCode'] == 0) {
             $wallet = Wallet::where('user_id', $id)->latest()->first();
-            $value = Wallet::create([
+            $items = $request['stkCallback']['CallbackMetadata']['Item'];
+            $amount = 0;
+            foreach ($items as $paymentItem) {
+                $Name = $paymentItem['Name'];
+                switch ($Name) {
+                    case 'Amount':
+                        $amount = $paymentItem['Value'];
+                        break;
+                }
+            }
+            Wallet::create([
                 'user_id' => $id,
                 'transaction_type' => 'Mpesa',
-                'debit' =>  0.0,
-                'credit' => ,
-                'balance' => $request->transaction_type == 'credit' ? $wallet->balance + $request->credit : $wallet->balance - $request->debit
+                'debit' => 0.0,
+                'credit' => $amount,
+                'balance' => $wallet->balance + $amount
             ]);
+            $first_name = $user->first_name;
+            $title = $user->title;
+            $message = "Hi $title $first_name, Recharge of Kes $amount was successful and has be credited to your account. Cheers!!";
+            $this->dispatch(new BroadcastMessage("Account Recharge", $message, $user->id));
         }
         return response()->json(['message' => 'Success']);
     }
-    public function loadWallet(Request $request){
+
+    public function loadWallet(Request $request)
+    {
 
         $access_token = self::generateToken();
         $BusinessShortCode = 174379;
@@ -88,7 +106,7 @@ class MpesaController extends Controller
         $PartyA = substr($request->user()->phone_number, 1);
         $PartyB = 174379;
         $PhoneNumber = substr($request->user()->phone_number, 1);
-        $CallBackURL = 'http://159.89.88.97/api/v1/load-wallets/'.$request->user()->id;
+        $CallBackURL = 'http://159.89.88.97/api/v1/load-wallets/' . $request->user()->id;
         $AccountReference = 'SabbieParks';
         $TransactionDesc = 'Testing';
 
@@ -151,7 +169,7 @@ class MpesaController extends Controller
         $PartyA = substr($request->user()->phone_number, 1);
         $PartyB = 174379;
         $PhoneNumber = substr($request->user()->phone_number, 1);
-        $CallBackURL = 'http://159.89.88.97/api/v1/transactions/'.$c->id;
+        $CallBackURL = 'http://159.89.88.97/api/v1/transactions/' . $c->id;
         $AccountReference = 'SabbieParks';
         $TransactionDesc = 'Testing';
 
@@ -196,7 +214,7 @@ class MpesaController extends Controller
 
     }
 
-    public function transaction_logs(Request $request,$id)
+    public function transaction_logs(Request $request, $id)
     {
         $request = $request['Body'];
         $collection = Collection::findOrfail($id);
@@ -208,18 +226,17 @@ class MpesaController extends Controller
                 'ResultDesc' => $request['stkCallback']['ResultDesc'],
                 'status' => $request['stkCallback']['ResultCode']
             ]);
-            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'],$user));
+            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'], $user));
 
-        }elseif ($request['stkCallback']['ResultCode'] == 1032){
+        } elseif ($request['stkCallback']['ResultCode'] == 1032) {
             $collection->update([
                 'merchantRequestId' => $request['stkCallback']['MerchantRequestID'],
                 'checkoutRequestId' => $request['stkCallback']['CheckoutRequestID'],
                 'ResultDesc' => $request['stkCallback']['ResultDesc'],
                 'status' => $request['stkCallback']['ResultCode']
             ]);
-            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'],$user));
-        }
-        elseif ($request['stkCallback']['ResultCode'] == 0) {
+            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'], $user));
+        } elseif ($request['stkCallback']['ResultCode'] == 0) {
             $collection->update([
                 'merchantRequestId' => $request['stkCallback']['MerchantRequestID'],
                 'checkoutRequestId' => $request['stkCallback']['CheckoutRequestID'],
@@ -238,7 +255,7 @@ class MpesaController extends Controller
                 'expiry_time' => 30,
                 'inconvenience_fee' => 50
             ]);
-            $this->dispatch(new PaymentStatusSuccess($request['stkCallback']['ResultDesc'],$user,30,50,ParkingSpot::findOrfail($collection->parking_spot_id)));
+            $this->dispatch(new PaymentStatusSuccess($request['stkCallback']['ResultDesc'], $user, 30, 50, ParkingSpot::findOrfail($collection->parking_spot_id)));
         }
         return response()->json(['message' => 'Success']);
     }
