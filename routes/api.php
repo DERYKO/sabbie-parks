@@ -26,7 +26,9 @@ $myapp->version('v1', function ($api) {
         });
         $api->resource('/spot', 'SpotController');
         $api->post('/transactions/{id}','MpesaController@transaction_logs');
+        $api->post('/load-wallets/{id}','MpesaController@walletCallBack');
         $api->group(['middleware' => ['auth:api']], function (Router $api) {
+            $api->get('/recharge-account','MpesaController@loadWallet');
             $api->get('/lipa-na-mpesa', 'MpesaController@lipa_na_mpesa');
             $api->resource('/vehicle-type', 'VehicleTypeController');
             $api->resource('/card', 'CreditCardController');
