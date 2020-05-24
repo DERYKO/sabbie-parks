@@ -71,6 +71,9 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
             Text::make('Code')->exceptOnForms(),
+            Text::make('Client Id', 'client_id')->default(function ($r) use ($request) {
+                return $request->user()->client_id;
+            }),
             Password::make('Password')
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
