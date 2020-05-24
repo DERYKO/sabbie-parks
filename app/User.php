@@ -10,7 +10,7 @@ use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Actionable,Notifiable, HasApiTokens;
+    use Actionable, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'avatar','title', 'first_name', 'last_name', 'device_token', 'email', 'preferred_notification_channel', 'phone_number', 'code', 'password'
+        'avatar', 'title', 'first_name', 'last_name', 'device_token', 'email', 'preferred_notification_channel', 'phone_number', 'code', 'password'
     ];
 
     /**
@@ -30,9 +30,14 @@ class User extends Authenticatable
         'remember_token', 'password'
     ];
 
+    public function wallets()
+    {
+        return $this->hasMany(Wallet::class, 'id', 'user_id');
+    }
+
     public function wallet()
     {
-        return $this->hasMany(Wallet::class,'id','user_id')->latest()->first();
+        return $this->hasMany(Wallet::class, 'id', 'user_id')->latest()->first();
     }
 
     public function vehicles()
