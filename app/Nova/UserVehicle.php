@@ -47,7 +47,7 @@ class UserVehicle extends Resource
             ID::make()->sortable(),
             BelongsTo::make('User')
                 ->rules('required'),
-            BelongsTo::make('VehicleType','vehicle_type')
+            BelongsTo::make('VehicleType', 'vehicle_type')
                 ->rules('required'),
             Text::make('Registration No')
                 ->rules('required'),
@@ -102,7 +102,15 @@ class UserVehicle extends Resource
         return [];
     }
 
-    public static function label() {
+    public static function label()
+    {
         return 'User Vehicles';
+    }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->whereHas('user', function ($q) use ($request) {
+            $q->where('client_id', $request->user()->client_id);
+        });
     }
 }

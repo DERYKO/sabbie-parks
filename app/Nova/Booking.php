@@ -40,7 +40,7 @@ class Booking extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -49,9 +49,9 @@ class Booking extends Resource
             ID::make()->sortable(),
             BelongsTo::make('User')
                 ->rules('required'),
-            BelongsTo::make('ParkingSpot','parking_spot')
+            BelongsTo::make('ParkingSpot', 'parking_spot')
                 ->rules('required'),
-            BelongsTo::make('UserVehicle','user_vehicle'),
+            BelongsTo::make('UserVehicle', 'user_vehicle'),
             Number::make('Expiry Time')
                 ->rules('required'),
             Text::make('Registration Number'),
@@ -64,7 +64,7 @@ class Booking extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -75,7 +75,7 @@ class Booking extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -86,7 +86,7 @@ class Booking extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -97,7 +97,7 @@ class Booking extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)
@@ -105,7 +105,15 @@ class Booking extends Resource
         return [];
     }
 
-    public static function label() {
+    public static function label()
+    {
         return 'Bookings';
+    }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->whereHas('parking_spot', function ($q) use ($request) {
+            $q->where('client_id', $request->user()->client_id);
+        });
     }
 }

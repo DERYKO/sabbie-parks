@@ -48,7 +48,7 @@ class Collection extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Receipt No'),
-            BelongsTo::make('UserVehicle','user_vehicle'),
+            BelongsTo::make('UserVehicle', 'user_vehicle'),
             BelongsTo::make('Client'),
             BelongsTo::make('ParkingSpot', 'parking_spot')
                 ->rules('required'),
@@ -105,6 +105,12 @@ class Collection extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+       return $query->where('client_id', $request->user()->client_id);
+
     }
 
     public static function label()
