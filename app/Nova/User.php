@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
@@ -113,6 +114,11 @@ class User extends Resource
     public function lenses(Request $request)
     {
         return [];
+    }
+
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->where('client_id', $request->user()->clien_id);
     }
 
     /**
