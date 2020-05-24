@@ -88,7 +88,8 @@ class MpesaController extends Controller
                 'balance' => $wallet->balance + $amount
             ]);
             $first_name = $user->first_name;
-            $message = "Hi $first_name, Recharge of Kes $amount was successful and has be credited to your account. Cheers!!";
+            $title = $user->title;
+            $message = "Hi $title $first_name, Recharge of Kes $amount was successful and has be credited to your account. Cheers!!";
             $this->dispatch(new BroadcastMessage("Account Recharge", $message, $user->id));
         }
         return response()->json(['message' => 'Success']);
