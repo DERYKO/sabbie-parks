@@ -39,6 +39,10 @@ class WalletController extends Controller
 
     }
 
+    public function lipaNaMpesa(Request $request){
+
+    }
+
     /**
      * Display the specified resource.
      *

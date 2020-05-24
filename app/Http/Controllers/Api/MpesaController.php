@@ -8,6 +8,7 @@ use App\Jobs\PaymentStatusFail;
 use App\Jobs\PaymentStatusSuccess;
 use App\ParkingSpot;
 use App\User;
+use App\Wallet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -56,6 +57,79 @@ class MpesaController extends Controller
 
 
     }
+    public function walletCallBack(Request $request,$id){
+        $request = $request['Body'];
+        $user = User::findOrfail($id);
+        if ($request['stkCallback']['ResultCode'] == 1) {
+            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'],$user));
+
+        }elseif ($request['stkCallback']['ResultCode'] == 1032){
+            $this->dispatch(new PaymentStatusFail($request['stkCallback']['ResultDesc'],$user));
+        }
+        elseif ($request['stkCallback']['ResultCode'] == 0) {
+            $wallet = Wallet::where('user_id', $id)->latest()->first();
+            $value = Wallet::create([
+                'user_id' => $id,
+                'transaction_type' => 'Mpesa',
+                'debit' =>  0.0,
+                'credit' => ,
+                'balance' => $request->transaction_type == 'credit' ? $wallet->balance + $request->credit : $wallet->balance - $request->debit
+            ]);
+        }
+        return response()->json(['message' => 'Success']);
+    }
+    public function loadWallet(Request $request){
+
+        $access_token = self::generateToken();
+        $BusinessShortCode = 174379;
+        $Passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
+        $TransactionType = 'CustomerPayBillOnline';
+        $Amount = $request->input('amount');
+        $PartyA = substr($request->user()->phone_number, 1);
+        $PartyB = 174379;
+        $PhoneNumber = substr($request->user()->phone_number, 1);
+        $CallBackURL = 'http://159.89.88.97/api/v1/load-wallets/'.$request->user()->id;
+        $AccountReference = 'SabbieParks';
+        $TransactionDesc = 'Testing';
+
+
+        $mpesa_env = env('MPESA_ENV');
+        if ($mpesa_env == 'sandbox') {
+            $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
+        } elseif ($mpesa_env == 'live') {
+            $url = 'https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
+        } else {
+            return json_encode(['error message' => 'invalid mpesa environment']);
+        }
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Authorization:Bearer ' . $access_token)); //setting custom header
+
+        $curl_post_data = array(
+            //Fill in the request parameters with valid values
+
+            'BusinessShortCode' => $BusinessShortCode,
+            'Password' => base64_encode($BusinessShortCode . $Passkey . date("YmdHis")),
+            'Timestamp' => date("YmdHis"),
+            'TransactionType' => $TransactionType,
+            'Amount' => $Amount,
+            'PartyA' => $PartyA,
+            'PartyB' => $PartyB,
+            'PhoneNumber' => $PhoneNumber,
+            'CallBackURL' => $CallBackURL,
+            'AccountReference' => $AccountReference,
+            'TransactionDesc' => $TransactionDesc,
+        );
+        $data_string = json_encode($curl_post_data);
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
+
+        $curl_response = curl_exec($curl);
+
+        return $curl_response;
+    }
 
     public function lipa_na_mpesa(Request $request)
     {
@@ -67,7 +141,7 @@ class MpesaController extends Controller
             'amount' => $request->amount,
             'partyA' => $request->user()->phone_number,
             'partyB' => 174379,
-            'status' => 1,
+            'status' => 0,
         ]);
         $access_token = self::generateToken();
         $BusinessShortCode = 174379;
