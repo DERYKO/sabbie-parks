@@ -28,7 +28,6 @@
                 formData.append('longitude', this.currentPlace.geometry.location.lng())
             },
             setPlace(place) {
-                console.log(place);
                 this.currentPlace = place;
             }
         }

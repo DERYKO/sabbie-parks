@@ -9,7 +9,6 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,800,800i,900,900i" rel="stylesheet">
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBbMbpTY8u3RUhX8KUrvq0eSLHxkNZUp-k"></script>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('app.css', 'vendor/nova') }}">
@@ -94,7 +93,7 @@
         Nova.liftOff()
     </script>
     <script type="text/javascript"
-            src="https://maps.google.com/maps/api/js?key=AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58"></script>
+            src="https://maps.google.com/maps/api/js?key=AIzaSyBbMbpTY8u3RUhX8KUrvq0eSLHxkNZUp-k"></script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 </body>
 </html>

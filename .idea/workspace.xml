@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova-components/MappingSelect/resources/js/components/FormField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/MappingSelect/resources/js/components/FormField.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +251,7 @@
       <workItem from="1611597280572" duration="16000" />
       <workItem from="1611597392037" duration="16000" />
       <workItem from="1611675893664" duration="658000" />
-      <workItem from="1612170155048" duration="479000" />
+      <workItem from="1612170155048" duration="1542000" />
     </task>
     <servers />
   </component>
@@ -264,9 +267,9 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1611597393295" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1612170194086">
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1612171728939">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1612170194086" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1612171728939" />
   </component>
 </project>
