@@ -92,8 +92,7 @@
     <script>
         Nova.liftOff()
     </script>
-    <script type="text/javascript"
-            src="https://maps.google.com/maps/api/js?key=AIzaSyBbMbpTY8u3RUhX8KUrvq0eSLHxkNZUp-k"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBbMbpTY8u3RUhX8KUrvq0eSLHxkNZUp-k"></script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 </body>
 </html>
