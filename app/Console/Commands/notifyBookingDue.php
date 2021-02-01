@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Validator;
 use LaravelFCM\Facades\FCM;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use LaravelFCM\Message\Topics;
@@ -41,7 +42,7 @@ class notifyBookingDue extends Command
      */
     public function handle()
     {
-        User::get()->each(function ($user){
+        User::get()->each(function ($user) {
             $notificationBuilder = new PayloadNotificationBuilder("Booking expiry");
             $notificationBuilder->setBody("Hurry!! You booking expires in 5 mins.")
                 ->setSound('default');

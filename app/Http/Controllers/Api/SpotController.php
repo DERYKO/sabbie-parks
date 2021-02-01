@@ -18,7 +18,7 @@ class SpotController extends Controller
     public function index(Request $request)
     {
         $client = new Client();
-        $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request->latitude . ',' . $request->longitude . '&key=AIzaSyAnRNSn36QJmZmcocAkuAcTjYG_NhmjoNQ');
+        $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request->latitude . ',' . $request->longitude . '&key=AIzaSyBbMbpTY8u3RUhX8KUrvq0eSLHxkNZUp-k');
         $response = $response->getBody()->getContents();
         $result = json_decode($response);
         $level1 = collect($result->results)->reverse()->filter(function ($item) {
