@@ -18,9 +18,10 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($model) {
+            if (Auth::user()->client_id){
+                $model->client_id = Auth::user()->client_id;
 
-            $model->client_id = Auth::user()->client_id;
-
+            }
         });
     }
 
