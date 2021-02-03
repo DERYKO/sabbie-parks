@@ -2,7 +2,7 @@ import * as VueGoogleMaps from "vue2-google-maps";
 Nova.booting((Vue, router) => {
     Vue.use(VueGoogleMaps, {
         load: {
-            key: "AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58",
+            key: "AIzaSyDCi3Hv_dTHt0Vj9M16r5rJ_nvkltUtalY",
             libraries: "places" // necessary for places input
         }
     });
