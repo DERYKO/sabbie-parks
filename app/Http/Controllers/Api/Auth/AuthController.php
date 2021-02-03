@@ -24,7 +24,7 @@ class AuthController extends Controller
             User::where('phone_number', $request->phone_number)->update([
                 'code' => $code
             ]);
-//            $this->dispatch(new SendSmsMessage($request->phone_number, "Your reset code is $code kindly use it to login"));
+            $this->dispatch(new SendSmsMessage($request->phone_number, "Your reset code is $code kindly use it to login"));
             return response()->json(['user' => User::where('phone_number', $request->phone_number)->first(['id', 'title', 'code', 'first_name', 'last_name', 'phone_number', 'email']), 'status' => 'existing']);
         } else {
             $new = User::create([
@@ -50,7 +50,7 @@ class AuthController extends Controller
             'code' => ['required']
         ]);
         $user = User::where('phone_number', $request->phone_number)->first(['id', 'code', 'first_name', 'last_name', 'phone_number', 'email']);
-        if ($request->code) {
+        if ($user->code == $request->code) {
             $token = $user->createToken('MyApp')->accessToken;
             return response()->json(['user' => $user, 'token' => $token]);
         } else {
