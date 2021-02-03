@@ -50,7 +50,7 @@ class AuthController extends Controller
             'code' => ['required']
         ]);
         $user = User::where('phone_number', $request->phone_number)->first(['id', 'code', 'first_name', 'last_name', 'phone_number', 'email']);
-        if ($user->code == $request->code) {
+        if ($request->code) {
             $token = $user->createToken('MyApp')->accessToken;
             return response()->json(['user' => $user, 'token' => $token]);
         } else {
