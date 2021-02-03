@@ -46,6 +46,7 @@ class ParkingSpotAddress implements ShouldQueue
         $response = $response->getBody()->getContents();
         $result = json_decode($response);
         collect($result->results)->reverse()->each(function ($item){
+            echo json_encode($item);
             if (collect($item->types)->contains('locality')) {
                 Region::updateOrCreate([
                     'country_code' => 'ke',
