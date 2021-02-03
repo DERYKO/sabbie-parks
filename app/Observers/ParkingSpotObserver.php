@@ -26,7 +26,7 @@ class ParkingSpotObserver
      */
     public function updated(ParkingSpot $parkingSpot)
     {
-        //
+        dispatch(new ParkingSpotAddress($parkingSpot));
     }
 
     /**

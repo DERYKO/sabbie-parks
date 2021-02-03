@@ -42,7 +42,7 @@ class ParkingSpotAddress implements ShouldQueue
     public function handle()
     {
         $client = new \GuzzleHttp\Client();
-        $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $this->parking_spot->latitude . ',' . $this->parking_spot->longitude . '&key=AIzaSyAwB-YqrFP1K_TdPNAJ_DapYcqC4v6FM58');
+        $response = $client->get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $this->parking_spot->latitude . ',' . $this->parking_spot->longitude . '&key=AIzaSyDCi3Hv_dTHt0Vj9M16r5rJ_nvkltUtalY');
         $response = $response->getBody()->getContents();
         $result = json_decode($response);
         collect($result->results)->reverse()->each(function ($item){
