@@ -15,7 +15,7 @@ class ParkingSpotObserver
      */
     public function created(ParkingSpot $parkingSpot)
     {
-        dispatch(new ParkingSpotAddress($parkingSpot));
+        dispatch_now(new ParkingSpotAddress($parkingSpot));
     }
 
     /**
@@ -26,7 +26,7 @@ class ParkingSpotObserver
      */
     public function updated(ParkingSpot $parkingSpot)
     {
-        dispatch(new ParkingSpotAddress($parkingSpot));
+        dispatch_now(new ParkingSpotAddress($parkingSpot));
     }
 
     /**
