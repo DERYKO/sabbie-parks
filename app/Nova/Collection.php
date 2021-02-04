@@ -107,11 +107,11 @@ class Collection extends Resource
         return [];
     }
 
-    public static function indexQuery(NovaRequest $request, $query)
-    {
-       return $query->where('client_id', $request->user()->client_id);
-
-    }
+//    public static function indexQuery(NovaRequest $request, $query)
+//    {
+//       return $query->where('client_id', $request->user()->client_id);
+//
+//    }
 
     public static function label()
     {

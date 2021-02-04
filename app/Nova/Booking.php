@@ -110,10 +110,10 @@ class Booking extends Resource
         return 'Bookings';
     }
 
-    public static function indexQuery(NovaRequest $request, $query)
-    {
-        return $query->whereHas('parking_spot', function ($q) use ($request) {
-            $q->where('client_id', $request->user()->client_id);
-        });
-    }
+//    public static function indexQuery(NovaRequest $request, $query)
+//    {
+//        return $query->whereHas('parking_spot', function ($q) use ($request) {
+//            $q->where('client_id', $request->user()->client_id);
+//        });
+//    }
 }
