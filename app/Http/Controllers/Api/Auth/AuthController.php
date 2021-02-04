@@ -24,7 +24,7 @@ class AuthController extends Controller
             User::where('phone_number', $request->phone_number)->update([
                 'code' => $code
             ]);
-            dispatch_now(new SendSmsMessage($request->phone_number, "Your reset code is $code kindly use it to login"));
+//            dispatch_now(new SendSmsMessage($request->phone_number, "Your reset code is $code kindly use it to login"));
             return response()->json(['user' => User::where('phone_number', $request->phone_number)->first(['id', 'title', 'code', 'first_name', 'last_name', 'phone_number', 'email']), 'status' => 'existing']);
         } else {
             $new = User::create([
