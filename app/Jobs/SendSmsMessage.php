@@ -35,7 +35,7 @@ class SendSmsMessage implements ShouldQueue
      */
     public function handle()
     {
-        $AT = new AfricasTalking('sandbox', 'a4f17e867430bc2c6e5a0627229b8f2d6d1860203d13a4d2426231a7a678a8ce');
+        $AT = new AfricasTalking('I-Parks', '2af7a97ad071bf573df518b59df6c935a96387c1ea8c43e44b58f73c3d886005');
         $sms = $AT->sms();
         $sms->send([
             'to' => $this->number,
