@@ -24,9 +24,9 @@ class Booking extends Model
         return $this->belongsTo(UserVehicle::class);
     }
     public function scopeFilterBy($q,$filters){
-        if (!isset($filters['date'])){
-            $filters['date'] = Carbon::now()->toDateString();
-        }
-        $q->whereBetween('created_at',[Carbon::parse($filters['date'])->startOfDay(),Carbon::parse($filters['date'])->endOfDay()]);
+//        if (!isset($filters['date'])){
+//            $filters['date'] = Carbon::now()->toDateString();
+//        }
+//        $q->whereBetween('created_at',[Carbon::parse($filters['date'])->startOfDay(),Carbon::parse($filters['date'])->endOfDay()]);
     }
 }
