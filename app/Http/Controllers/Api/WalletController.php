@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Booking;
 use App\Collection;
 use App\Http\Controllers\Controller;
+use App\Jobs\PaymentStatusSuccess;
 use App\ParkingSpot;
 use App\Wallet;
 use Illuminate\Http\Request;
@@ -61,6 +62,7 @@ class WalletController extends Controller
             'expiry_time' => 30,
             'inconvenience_fee' => 50
         ]);
+        dispatch_now(new PaymentStatusSuccess("Amount deducted from wallet successfully", $request->user(), 30, 50, $parking_spot));
         return \response()->json(['message' => 'Wallet balance deducted successfully'], 200);
     }
 
