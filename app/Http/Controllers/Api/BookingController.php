@@ -17,7 +17,7 @@ class BookingController extends Controller
     public function index(Request $request)
     {
         $bookings = Booking::FilterBy($request->all())->with('parking_spot', 'user_vehicle','user_vehicle.vehicle_type:id,icon,name')
-//            ->where('user_id', $request->user()->id)
+            ->where('user_id', $request->user()->id)
             ->get();
         return response()->json($bookings);
     }
