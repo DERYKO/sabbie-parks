@@ -30,6 +30,7 @@ $myapp->version('v1', function ($api) {
         $api->group(['middleware' => ['auth:api']], function (Router $api) {
             $api->get('/recharge-account','MpesaController@loadWallet');
             $api->get('/lipa-na-mpesa', 'MpesaController@lipa_na_mpesa');
+            $api->get('/lipa-na-wallet', 'WalletController@lipaNaWallet');
             $api->resource('/vehicle-type', 'VehicleTypeController');
             $api->resource('/card', 'CreditCardController');
             $api->get('/logout', 'Auth\\AuthController@logout');
