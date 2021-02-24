@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nova-components/MiamiIce/resources/css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/MiamiIce/resources/css/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova/resources/views/auth/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova/resources/views/auth/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nova/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova/resources/views/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +269,7 @@
       <workItem from="1613545419181" duration="1066000" />
       <workItem from="1613709145096" duration="1155000" />
       <workItem from="1614105003053" duration="5902000" />
-      <workItem from="1614148689252" duration="257000" />
+      <workItem from="1614148689252" duration="621000" />
     </task>
     <servers />
   </component>

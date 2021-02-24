@@ -38,7 +38,7 @@
             <div class="content">
                 <div class="flex items-center relative shadow h-header bg-white z-50 px-6">
                     <a href="{{ Config::get('nova.url') }}" class="no-underline dim font-bold text-90 mr-6">
-                        Sabbie Parks
+                        I Park
                     </a>
 
                     @if (count(Nova::globallySearchableResources(request())) > 0)
@@ -56,7 +56,7 @@
                     <p class="mt-8 text-center text-xs text-80">
                         <a href="http://nova.laravel.com" class="text-primary dim no-underline">Park the smart way</a>
                         <span class="px-1">&middot;</span>
-                        &copy; {{ date('Y') }} Sabbie parks hedstech.
+                        &copy; {{ date('Y') }} I Park hedstech.
                         <span class="px-1">&middot;</span>
                         v{{ Laravel\Nova\Nova::version() }}
                     </p>
