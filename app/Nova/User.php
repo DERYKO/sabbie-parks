@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Nova\Actions\BroadcastMessage;
 use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
@@ -43,7 +44,7 @@ class User extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -70,6 +71,7 @@ class User extends Resource
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
+            BelongsTo::make('UserType', 'user_type'),
             Text::make('Code')->exceptOnForms(),
             Password::make('Password')
                 ->creationRules('required', 'string', 'min:6')
@@ -86,7 +88,7 @@ class User extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -97,7 +99,7 @@ class User extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -108,7 +110,7 @@ class User extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -124,7 +126,7 @@ class User extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return array
      */
     public function actions(Request $request)

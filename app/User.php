@@ -43,6 +43,11 @@ class User extends Authenticatable
         'remember_token', 'password'
     ];
 
+    public function user_type()
+    {
+        return $this->belongsTo(UserType::class, 'user_type_id', 'id');
+    }
+
     public function wallets()
     {
         return $this->hasMany(Wallet::class, 'id', 'user_id');

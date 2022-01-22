@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba5f7c72-6c3a-4b6a-b2f9-b39c739fb299" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/nova-components/MiamiIce/resources/css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/nova-components/MiamiIce/resources/css/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/nova/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nova/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nova/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,9 +14,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -32,6 +32,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -175,7 +183,6 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -185,6 +192,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/nova/resources/js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -200,6 +208,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -269,33 +278,24 @@
       <workItem from="1613545419181" duration="1066000" />
       <workItem from="1613709145096" duration="1155000" />
       <workItem from="1614105003053" duration="5902000" />
-      <workItem from="1614148689252" duration="621000" />
+      <workItem from="1614148689252" duration="829000" />
+      <workItem from="1614239579389" duration="1504000" />
+      <workItem from="1614246107935" duration="359000" />
+      <workItem from="1615804446800" duration="961000" />
+      <workItem from="1615809739496" duration="9000" />
+      <workItem from="1617816009542" duration="1301000" />
+      <workItem from="1619437416271" duration="259000" />
+      <workItem from="1619438062972" duration="2424000" />
+      <workItem from="1619536633318" duration="685000" />
+      <workItem from="1621177412758" duration="26000" />
+      <workItem from="1623596893810" duration="74000" />
+      <workItem from="1631111682368" duration="655000" />
+      <workItem from="1637951845399" duration="1025000" />
+      <workItem from="1642869843127" duration="603000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="588" y="214" width="800" height="677" key="#Notifications" timestamp="1611676387658">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="588" y="214" width="800" height="677" key="#Notifications/67.27.1853.1053@67.27.1853.1053" timestamp="1611676387658" />
-    <state x="801" y="271" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1612266421507">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="801" y="271" width="374" height="562" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1612266421507" />
-    <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614113503148">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="726" y="310" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1614113503148" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1614148689909">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1614148689909" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1614118312616">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1614118312616" />
+    <option name="version" value="3" />
   </component>
 </project>
