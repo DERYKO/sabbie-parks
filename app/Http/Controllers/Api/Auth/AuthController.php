@@ -9,6 +9,7 @@ use App\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -49,7 +50,8 @@ class AuthController extends Controller
         $this->validate($request, [
             'code' => ['required']
         ]);
-        $user = User::where('phone_number', $request->phone_number)->first(['id', 'code', 'first_name', 'last_name', 'phone_number', 'email']);
+        $user = User::where('phone_number','like', '%'.$request->phone_number.'%')->first(['id', 'code', 'first_name', 'last_name', 'phone_number', 'email']);
+        Log::info($user);
         if ($user->code == $request->code) {
             $token = $user->createToken('MyApp')->accessToken;
             return response()->json(['user' => $user, 'token' => $token]);
