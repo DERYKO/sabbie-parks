@@ -54,6 +54,7 @@ class AuthController extends Controller
             ->first(['id', 'code', 'first_name', 'last_name', 'phone_number', 'email']);
         Log::info($user->code == $request->code);
         if ($user->code == $request->code) {
+            Log::info('ok');
             $token = $user->createToken('MyApp')->accessToken;
             return response()->json(['user' => $user, 'token' => $token],200);
         } else {
