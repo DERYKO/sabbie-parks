@@ -50,7 +50,9 @@ class AuthController extends Controller
         $this->validate($request, [
             'code' => ['required']
         ]);
-        $user = User::where('phone_number','like', '%'.$request->phone_number.'%')->first(['id', 'code', 'first_name', 'last_name', 'phone_number', 'email']);
+        $user = User::where('phone_number','like', '%'.$request->phone_number.'%')
+            ->first(['id', 'code', 'first_name', 'last_name', 'phone_number', 'email']);
+        Log::info($user);
         if ($user->code == $request->code) {
             $token = $user->createToken('MyApp')->accessToken;
             return response()->json(['user' => $user, 'token' => $token],200);
